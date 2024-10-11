@@ -37,3 +37,31 @@ button,
 input {
   font-family: inherit;
 }
+
+a {
+  color: var(--blue);
+  &:visited {
+    color: white;
+  }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+::-webkit-scrollbar {
+  width: 2px;
+}
+::-webkit-scrollbar-thumb {
+  background: #8495a6;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #1d2126;
+  margin-block: 5px;
+  border-radius: 4px;
+}

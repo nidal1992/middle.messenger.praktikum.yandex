@@ -12,8 +12,9 @@ export default defineConfig({
     emptyOutDir: false,
     rollupOptions: {
       input: {
-        main: resolve(__dirname, 'index.html'),
+        login: resolve(__dirname, 'index.html'),
         register: resolve(__dirname, 'register/index.html'),
+        main: resolve(__dirname, 'main-page/index.html'),
       },
     },
   },
