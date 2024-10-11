@@ -1,0 +1,27 @@
+.register-form {
+  &__form {
+    display: flex;
+    gap: 20px;
+  }
+
+  &__fieldset {
+    display: grid;
+    gap: 10px;
+    min-width: 235px;
+    padding: 0;
+    margin: 0;
+    border: none;
+  }
+  
+  &__controls-wrapper {
+    display: grid;
+    justify-items: center;
+    gap: 10px;
+  }
+  
+  &__link-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+}

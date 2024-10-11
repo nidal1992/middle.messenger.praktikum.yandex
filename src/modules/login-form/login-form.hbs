@@ -1,0 +1,10 @@
+{{#>Wrapper padding="20_20" className="login-form"}}
+  <form id="login-form" class="login-form__form">
+    {{>Input label="Login" name="login" placeholder="Your Login" className="" required="1"}}
+    {{>Input label="Password" name="password" type="password" placeholder="Your Password" className="" required="1"}}
+  </form>
+{{/Wrapper}}
+<div class="login-form__controls-wrapper">
+  {{>Button form="login-form" className="login-form__submit" label="REGISTER" variant="primary"}}
+  {{>Link label="Registration" href="/register/index.html" className=""}}
+</div>

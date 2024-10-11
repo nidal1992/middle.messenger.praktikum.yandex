@@ -1,0 +1,21 @@
+{{#>Wrapper padding="20_20" className="register-form"}}
+  <form id="register-form" class="register-form__form">
+    <fieldset class="register-form__fieldset">
+      {{>Input label="First Name" name="first_name" placeholder="Your First Name"}}
+      {{>Input label="Second Name" name="second_name" placeholder="Your Second Name"}}
+      {{>Input label="Login" name="login" placeholder="Your Login"}}
+    </fieldset>
+    <fieldset class="register-form__fieldset">
+      {{>Input label="Email" name="email" type="email" placeholder="Your Email"}}
+      {{>Input label="Password" name="password" type="password" placeholder="Your Password"}}
+      {{>Input label="Phone" name="phone" type="tel" placeholder="Your Phone"}}
+    </fieldset>
+  </form>
+{{/Wrapper}}
+<div class="register-form__controls-wrapper">
+  {{>Button form="register-form" className="register-form__submit" label="ENTER" variant="primary"}}
+  <div class="register-form__link-wrapper">
+    <span class="typography-paragraph">Do you have a profile?</span>
+    {{>Link label="LOGIN" href="/" className=''}}
+  </div>
+</div>

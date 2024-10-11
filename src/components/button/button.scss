@@ -1,0 +1,22 @@
+.button {
+  padding: 7px 50px;
+  border: none;
+  border-radius: 1px;
+
+  cursor: pointer;
+  transition: 150ms ease-in;
+
+  &--primary {
+    background-color: var(--blue);
+    &:hover {
+      box-shadow: 0 0 30px -7px var(--blue);
+    }
+  }
+
+  &--failure {
+    background-color: var(--red);
+    &:hover {
+      box-shadow: 0 0 30px -7px var(--red);
+    }
+  }
+}
