@@ -1,0 +1,20 @@
+.burger {
+  padding: 8px;
+  border-radius: 1px;
+  border: 1px solid var(--grey3c);
+  font-size: 0;
+  background-color: transparent;
+  cursor: pointer;
+  
+  &,
+  svg path {
+    transition: 200ms ease-in-out;
+  }
+  &:hover {
+    background-color: var(--grey3c);
+    
+    svg path {
+      fill: var(--darkGreen);
+    }
+  }
+}
