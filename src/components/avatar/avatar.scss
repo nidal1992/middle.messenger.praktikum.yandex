@@ -1,0 +1,12 @@
+.avatar {
+  border: 1px solid var(--grey99);
+  border-radius: 1px;
+  font-size: 0;
+  padding: 3px;
+  
+  &__img {
+    border: none;
+    height: 30px;
+    width: 30px;
+  }
+}
