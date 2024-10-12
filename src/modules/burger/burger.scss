@@ -5,14 +5,14 @@
   font-size: 0;
   background-color: transparent;
   cursor: pointer;
-  
+
   &,
   svg path {
     transition: 200ms ease-in-out;
   }
   &:hover {
     background-color: var(--grey3c);
-    
+
     svg path {
       fill: var(--darkGreen);
     }
