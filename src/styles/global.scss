@@ -38,13 +38,6 @@ input {
   font-family: inherit;
 }
 
-a {
-  color: var(--blue);
-  &:visited {
-    color: white;
-  }
-}
-
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;

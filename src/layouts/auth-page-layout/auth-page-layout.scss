@@ -1,20 +1,16 @@
 .auth-layout {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  place-content: center;
   min-height: 100svh;
 
-  & > * {
-    flex-basis: 450px;
-  }
-}
+  &__form-wrapper {
+    display: grid;
+    justify-items: center;
+    gap: 20px;
+    min-width: 500px;
 
-.auth-form-layout {
-  display: grid;
-  justify-items: center;
-  gap: 20px;
-
-  &__title {
-    text-align: center;
+    &__title {
+      text-align: center;
+    }
   }
 }

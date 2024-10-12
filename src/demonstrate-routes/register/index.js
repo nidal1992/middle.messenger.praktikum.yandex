@@ -1,12 +1,12 @@
 import Handlebars from 'handlebars/runtime';
 
-import RegisterPage from '../pages/register.hbs';
+import RegisterPage from '../../pages/register.hbs';
 
-import * as Layouts from '../layouts';
-import * as Components from '../components';
-import * as Modules from '../modules';
+import * as Layouts from '../../layouts/index.js';
+import * as Components from '../../components/index.js';
+import * as Modules from '../../modules/index.js';
 
-import '../styles/global.scss';
+import '../../styles/global.scss';
 
 [Layouts, Modules, Components].forEach((item) => {
   Object.entries(item).forEach(([name, entity]) =>
