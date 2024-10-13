@@ -1,3 +1,17 @@
-{{#>SettingsPageLayout back-text="BACK TO CHAT" back-url="demonstrate-routes/main-page/index.html"}}
-
+{{#>SettingsPageLayout}}
+  {{>Link label="BACK TO CHAT" href="/demonstrate-routes/main-page/index.html" variant="arrow" className="settings-back-link"}}
+  {{>Avatar src="/images/empty-img.png" variant="big" className=""}}
+  <div style="width: 100%">
+    {{#>Row label="NAME"}}John{{/Row}}
+    {{#>Row label="SECOND NAME"}}Dow{{/Row}}
+    {{#>Row label="CHAT NAME"}}John Dow{{/Row}}
+    {{#>Row label="LOGIN"}}john_dow{{/Row}}
+    {{#>Row label="EMAIL"}}john_dow@gmail.com{{/Row}}
+    {{#>Row label="PHONE"}}+7 999 999-99-99{{/Row}}
+  </div>
+  <div class="content-center">
+    {{>Link label="change password" href="/demonstrate-routes/change-password-page/index.html"}}
+    {{>Link label="edit profile" href="/demonstrate-routes/settings-edit/index.html"}}
+    {{>Button label="EXIT" variant="failure" className=""}}
+  </div>
 {{/SettingsPageLayout}}

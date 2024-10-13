@@ -1,12 +1,38 @@
 .avatar {
-  border: 1px solid var(--grey99);
+  border: 1px solid var(--grey59);
   border-radius: 1px;
   font-size: 0;
   padding: 3px;
+  box-shadow: 2px 2px 0 0 var(--black);
+  width: fit-content;
 
   &__img {
     border: none;
     height: 30px;
     width: 30px;
+  }
+
+  &--big {
+    position: relative;
+    padding: 40px;
+    background-color: var(--grey3c);
+    cursor: pointer;
+
+    &::after {
+      content: 'Change avatar';
+      position: absolute;
+      inset: 0;
+      background-color: var(--grey26);
+      color: var(--white);
+      font-size: 14px;
+      text-align: center;
+      align-content: center;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    &:hover::after {
+      opacity: 1;
+    }
   }
 }

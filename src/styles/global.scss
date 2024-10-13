@@ -63,10 +63,9 @@ input[type='number'] {
   border-radius: 4px;
 }
 
-.position-relative {
-  position: relative;
-}
-
-.position-absolute {
-  position: absolute;
+.content-center {
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 5px;
 }

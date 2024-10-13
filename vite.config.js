@@ -1,5 +1,5 @@
-import { resolve } from 'path';
-import { defineConfig } from 'vite';
+import {resolve} from 'path';
+import {defineConfig} from 'vite';
 import autoprefixer from 'autoprefixer';
 
 import handlebars from './handlebars-precompile';
@@ -34,11 +34,39 @@ export default defineConfig({
           'settings-profile',
           'index.html',
         ),
+        settingsEdit: resolve(
+          __dirname,
+          'src',
+          'demonstrate-routes',
+          'settings-edit ',
+          'index.html',
+        ),
+        changePassword: resolve(
+          __dirname,
+          'src',
+          'demonstrate-routes',
+          'change-password-page ',
+          'index.html',
+        ),
+        errorNotFound: resolve(
+          __dirname,
+          'src',
+          'demonstrate-routes',
+          'error-404 ',
+          'index.html',
+        ),
+        serverErrorPage: resolve(
+          __dirname,
+          'src',
+          'demonstrate-routes',
+          'error-505 ',
+          'index.html',
+        ),
       },
     },
   },
   server: {
-    port: 3000,
+    port: 3001,
   },
   plugins: [handlebars()],
   css: {
