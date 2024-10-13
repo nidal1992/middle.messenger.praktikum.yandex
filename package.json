@@ -1,7 +1,7 @@
 {
   "name": "messanger",
   "engines": {
-    "node": ">=20.0.0"
+    "node": ">=16.x"
   },
   "private": true,
   "version": "0.0.0",
