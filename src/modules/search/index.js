@@ -1,1 +1,1 @@
-export {default as Search} from './search.hbs';
+export { default as Search } from './search.hbs';

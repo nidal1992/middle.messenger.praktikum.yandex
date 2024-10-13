@@ -1,5 +1,5 @@
-import {resolve} from 'path';
-import {defineConfig} from 'vite';
+import { resolve } from 'path';
+import { defineConfig } from 'vite';
 import autoprefixer from 'autoprefixer';
 
 import handlebars from './handlebars-precompile';
