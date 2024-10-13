@@ -1,0 +1,24 @@
+{
+  "name": "messanger",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "start": "npm run build && node ./src/server.js",
+    "build": "vite build",
+    "format": "prettier --write .",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38",
+    "sass": "^1.77.5",
+    "vite": "^5.2.0"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "handlebars": "^4.7.8",
+    "normalize.css": "^8.0.1"
+  }
+}

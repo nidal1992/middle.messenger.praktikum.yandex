@@ -1,0 +1,56 @@
+.input {
+  display: block;
+  width: 100%;
+
+  &__label {
+    display: inline-block;
+    margin-bottom: 5px;
+
+    font-size: 14px;
+    color: var(--grey99);
+    text-shadow: 1px 1px var(--grey3c);
+  }
+
+  &__icon {
+    font-size: 0;
+  }
+
+  &__element-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 15px;
+    border: 1px solid var(--grey3c);
+    border-radius: 1px;
+
+    &:has(input:focus) {
+      border-color: var(--blue);
+    }
+
+    &:has(input:focus) svg path {
+      fill: var(--white);
+    }
+  }
+
+  &__element {
+    padding: 0;
+    border: none;
+    width: 100%;
+
+    font-size: 14px;
+    color: var(--white);
+
+    outline: none;
+    background-color: transparent;
+    text-transform: uppercase;
+
+    &::placeholder {
+      text-transform: inherit;
+      color: var(--grey3c);
+    }
+  }
+}
+
+.input.input--simple {
+  border: none;
+}

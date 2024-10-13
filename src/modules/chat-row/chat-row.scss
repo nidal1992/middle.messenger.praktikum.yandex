@@ -1,0 +1,20 @@
+.chat-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid var(--grey26);
+  }
+}
+
+.chat-row__text-content-title {
+  display: flex;
+  justify-content: space-between;
+
+  span {
+    font-size: 14px;
+    color: var(--grey3c);
+  }
+}

@@ -1,0 +1,16 @@
+.settings-layout {
+  height: 100svh;
+
+  &__wrapper {
+    display: grid;
+    justify-items: center;
+    gap: 40px;
+    min-width: 650px;
+  }
+
+  .settings-back-link {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+  }
+}

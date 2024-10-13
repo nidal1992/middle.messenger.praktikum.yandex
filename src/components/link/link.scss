@@ -1,0 +1,20 @@
+.link {
+  font-size: 14px;
+  color: var(--blue);
+  text-transform: uppercase;
+  text-decoration: none;
+
+  svg {
+    display: none;
+  }
+
+  &--underline {
+    text-decoration: underline;
+  }
+
+  &--arrow {
+    svg {
+      display: initial;
+    }
+  }
+}

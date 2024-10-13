@@ -1,0 +1,16 @@
+.error {
+  margin: 20px;
+  border: 1px solid var(--grey3c);
+  border-radius: 2px;
+  height: calc(100svh - 40px);
+
+  &__code {
+    font-size: 98px;
+    color: var(--grey59);
+  }
+
+  &__message {
+    font-size: 24px;
+    color: var(--white);
+  }
+}

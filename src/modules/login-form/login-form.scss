@@ -1,0 +1,21 @@
+.login-form {
+  width: 100%;
+
+  &__form,
+  &__controls-wrapper {
+    display: grid;
+  }
+
+  &__form {
+    gap: 10px;
+  }
+
+  &__submit {
+    width: fit-content;
+  }
+
+  &__controls-wrapper {
+    gap: 10px;
+    justify-items: center;
+  }
+}
