@@ -1,3 +1,5 @@
+[![Tests](https://github.com/nidal1992/middle.messenger.praktikum.yandex/actions/workflows/tests.yml/badge.svg)](https://github.com/nidal1992/middle.messenger.praktikum.yandex/actions/workflows/tests.yml)
+
 # Проект Мессенджер
 
 Это учебный проект мессенджера, целью которого является изучение и применение ключевых технологий веб-разработки,
