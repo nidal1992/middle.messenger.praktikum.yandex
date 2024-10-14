@@ -10,3 +10,5 @@ export {ChangePasswordForm} from './change-password-form';
 export {MessageListHeader} from './message-list-header';
 export {MessageInput} from './message-input';
 export {ProfileDetails} from './profile-details';
+export {MessageRow} from './message-row';
+export {MessageList} from './message-list';

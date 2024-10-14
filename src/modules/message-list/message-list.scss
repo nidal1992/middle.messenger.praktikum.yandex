@@ -1,0 +1,11 @@
+.message-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: scroll;
+  max-height: calc(100svh - 59px - 40px - 55px);
+
+  &__fill {
+    flex-grow: 1;
+  }
+}
