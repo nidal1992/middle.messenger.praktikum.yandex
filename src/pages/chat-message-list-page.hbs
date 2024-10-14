@@ -20,6 +20,8 @@
       {{>ChatRow}}
     {{/Wrapper}}
   {{/ChatListLayout}}
-  {{>Empty}}
+  {{#>MessageListLayout}}
+    {{>MessageListHeader}}
+  {{/MessageListLayout}}
   {{>Navigation}}
 {{/ChatPageLayout}}

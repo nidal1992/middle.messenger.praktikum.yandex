@@ -1,5 +1,5 @@
-import { resolve } from 'path';
-import { defineConfig } from 'vite';
+import {resolve} from 'path';
+import {defineConfig} from 'vite';
 import autoprefixer from 'autoprefixer';
 
 import handlebars from './handlebars-precompile';
@@ -60,6 +60,13 @@ export default defineConfig({
           'src',
           'demonstrate-routes',
           'error-500',
+          'index.html',
+        ),
+        chatMessageList: resolve(
+          __dirname,
+          'src',
+          'demonstrate-routes',
+          'chat-message-list-page',
           'index.html',
         ),
       },

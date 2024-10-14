@@ -22,4 +22,29 @@
       box-shadow: 0 0 30px -7px var(--red);
     }
   }
+
+  &--icon {
+    padding: 8px;
+    border-radius: 1px;
+    border: 1px solid var(--grey3c);
+    font-size: 0;
+    background-color: transparent;
+    cursor: pointer;
+    min-height: 33px;
+    min-width: 33px;
+
+    &,
+    svg {
+      transition: 200ms ease-in-out;
+    }
+
+    &:hover {
+      background-color: var(--grey3c);
+
+      svg {
+        fill: var(--darkGreen);
+      }
+    }
+
+  }
 }
