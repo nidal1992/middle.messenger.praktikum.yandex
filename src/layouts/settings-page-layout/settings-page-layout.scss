@@ -8,9 +8,13 @@
     min-width: 650px;
   }
 
-  .settings-back-link {
-    position: absolute;
-    top: 40px;
-    left: 40px;
+  &__avatar-wrapper {
+    justify-self: center;
   }
+}
+
+.settings-back-link {
+  position: absolute;
+  top: 40px;
+  left: 40px;
 }

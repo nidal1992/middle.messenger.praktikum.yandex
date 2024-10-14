@@ -1,11 +1,7 @@
 .edit-profile-form {
   display: flex;
   gap: 20px;
-  flex-wrap: wrap;
-
-  & > * {
-    flex: 1 1 45%;
-  }
+  width: 100%;
 
   &__fieldset {
     display: grid;

@@ -1,11 +1,14 @@
 {
   "name": "messanger",
+  "engines": {
+    "node": ">=16.x"
+  },
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "start": "npm run build && node ./src/server.js",
+    "start": "npm run build && vite preview",
     "build": "vite build",
     "format": "prettier --write .",
     "preview": "vite preview"

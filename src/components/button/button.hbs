@@ -2,10 +2,9 @@
   {{#if disabled }}disabled{{/if}}
   {{#if type }}type="{{ type }}" {{/if}}
   {{#if form }}form="{{ form }}" {{/if}}
+  {{#if id }}id="{{ id }}" {{/if}}
 >{{ label }}
   {{#if @partial-block }}
-    <span class="button__icon">
-      {{>@partial-block}}
-    </span>
+    {{>@partial-block}}
   {{/if}}
 </button>

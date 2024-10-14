@@ -1,3 +1,3 @@
 import './error.scss';
 
-export {default as Error} from './error.hbs';
+export { default as Error } from './error.hbs';
