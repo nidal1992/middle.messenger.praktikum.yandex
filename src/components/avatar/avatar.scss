@@ -17,6 +17,7 @@
     padding: 40px;
     background-color: var(--grey3c);
     cursor: pointer;
+    width: fit-content;
 
     &::after {
       content: 'Change avatar';
