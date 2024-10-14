@@ -13,3 +13,5 @@ export {MenuIcon} from './icons/menu-icon';
 export {SearchIcon} from './icons/search-icon';
 export {SendIcon} from './icons/send-icon';
 export {PaperclipIcon} from './icons/paperclip-icon';
+export {SeenMessageIcon} from './icons/seen-message-icon';
+export {UnseenMessageIcon} from './icons/unseen-message-icon';
