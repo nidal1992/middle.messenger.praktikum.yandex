@@ -1,0 +1,14 @@
+.auth-layout {
+  min-height: 100svh;
+
+  &__form-wrapper {
+    display: grid;
+    justify-items: center;
+    gap: 20px;
+    min-width: 500px;
+
+    &__title {
+      text-align: center;
+    }
+  }
+}

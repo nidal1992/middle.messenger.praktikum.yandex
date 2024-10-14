@@ -1,0 +1,10 @@
+<button class="button button--{{ variant }} {{ className }}{{#if @partial-block }} button--icon{{/if}}"
+  {{#if disabled }}disabled{{/if}}
+  {{#if type }}type="{{ type }}" {{/if}}
+  {{#if form }}form="{{ form }}" {{/if}}
+  {{#if id }}id="{{ id }}" {{/if}}
+>{{ label }}
+  {{#if @partial-block }}
+    {{>@partial-block}}
+  {{/if}}
+</button>

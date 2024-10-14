@@ -1,0 +1,8 @@
+.chat-list-layout {
+  display: grid;
+  grid-auto-rows: auto 1fr;
+  gap: 10px;
+
+  height: 100%;
+  overflow-y: scroll;
+}

@@ -1,0 +1,21 @@
+.message-row {
+  padding: 10px;
+  border-radius: 1px;
+  max-width: 45%;
+  background-color: var(--grey3c);
+
+  &--mine {
+    margin-left: auto;
+    text-align: end;
+  }
+
+  &__message-text {
+    color: var(--white);
+    margin-bottom: 5px;
+  }
+
+  &__time {
+    font-size: 12px;
+    color: var(--grey99);
+  }
+}

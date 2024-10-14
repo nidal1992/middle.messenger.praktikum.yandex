@@ -1,0 +1,12 @@
+<div class="message-row message-row--{{ variant }}">
+  <p class="message-row__message-text">{{ message }}</p>
+  <div class="message-row__additional-info">
+    {{#if seen}}
+      {{>SeenMessageIcon}}
+    {{/if}}
+    {{#if unseen}}
+      {{>UnseenMessageIcon}}
+    {{/if}}
+    <span class="message-row__time">{{ time }}</span>
+  </div>
+</div>
