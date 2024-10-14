@@ -13,6 +13,7 @@
 - [Страница авторизации](https://messanger-nidal1992.netlify.app/)
 - [Страница регистрации](https://messanger-nidal1992.netlify.app/demonstrate-routes/register/)
 - [Страница со списком чатов](https://messanger-nidal1992.netlify.app/demonstrate-routes/main-page/)
+- [Страница со листом сообщений](https://messanger-nidal1992.netlify.app/demonstrate-routes/chat-message-list-page/)
 - [Страница с информацией о пользователе](https://messanger-nidal1992.netlify.app/demonstrate-routes/settings-profile/)
 - [Страница редактирования данных пользователя](https://messanger-nidal1992.netlify.app/demonstrate-routes/settings-edit/)
 - [Страница изменения пароля](https://messanger-nidal1992.netlify.app/demonstrate-routes/change-password-page/)
