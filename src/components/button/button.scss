@@ -36,7 +36,6 @@
     background-color: transparent;
     cursor: pointer;
 
-
     &,
     svg {
       transition: 200ms ease-in-out;
@@ -49,6 +48,5 @@
         fill: var(--darkGreen);
       }
     }
-
   }
 }

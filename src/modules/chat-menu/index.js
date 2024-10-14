@@ -1,1 +1,1 @@
-export {default as ChatMenu} from './chat-menu.hbs';
+export { default as ChatMenu } from './chat-menu.hbs';

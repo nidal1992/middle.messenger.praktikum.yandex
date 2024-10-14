@@ -1,1 +1,1 @@
-export {default as MenuIcon} from './menu-icon.hbs';
+export { default as MenuIcon } from './menu-icon.hbs';
