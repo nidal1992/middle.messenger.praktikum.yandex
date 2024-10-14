@@ -5,8 +5,6 @@
   {{#if id }}id="{{ id }}" {{/if}}
 >{{ label }}
   {{#if @partial-block }}
-    <span class="button__icon">
-      {{>@partial-block}}
-    </span>
+    {{>@partial-block}}
   {{/if}}
 </button>

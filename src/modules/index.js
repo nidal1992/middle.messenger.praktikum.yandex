@@ -8,4 +8,5 @@ export {RegisterForm} from './register-form';
 export {EditProfileForm} from './edit-profile-form';
 export {ChangePasswordForm} from './change-password-form';
 export {MessageListHeader} from './message-list-header';
+export {MessageInput} from './message-input';
 export {ProfileDetails} from './profile-details';

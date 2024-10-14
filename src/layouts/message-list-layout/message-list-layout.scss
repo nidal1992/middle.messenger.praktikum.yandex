@@ -1,0 +1,9 @@
+.message-list-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  & *:nth-child(2) {
+    flex-grow: 1;
+  }
+}
