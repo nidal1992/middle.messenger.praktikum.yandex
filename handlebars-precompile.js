@@ -5,9 +5,10 @@ export default function handlebars() {
 
   return {
     name: 'vite-handlebars-precompile',
+
     transform(src, id) {
       if (!fileRegexp.test(id)) {
-        return;
+        return undefined;
       }
 
       const code = `
