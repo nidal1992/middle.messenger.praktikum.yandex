@@ -6,5 +6,5 @@
   "bracketSpacing": true,
   "semi": true,
   "experimentalTernaries": true,
-  "printWidth": 120
+  "printWidth": 100
 }
