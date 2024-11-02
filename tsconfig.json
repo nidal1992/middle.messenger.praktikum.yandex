@@ -5,6 +5,7 @@
       "ESNext",
       "dom"
     ],
+    "module": "ESNext",
     "skipLibCheck": true,
     "esModuleInterop": true,
     "strictBindCallApply": true,
