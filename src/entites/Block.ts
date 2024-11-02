@@ -4,7 +4,10 @@ import { shallowEqual } from '@/utils/shallowEqual.ts';
 
 import EventBus from './EventBus';
 
-export abstract class Block<Props extends BlockProps = BlockProps> {
+export abstract class Block<
+  Props extends SimpleMap = SimpleMap,
+  State extends SimpleMap = SimpleMap,
+> {
   static EVENTS = {
     EVENT_INIT: 'init',
     EVENT_FLOW_CDM: 'flow:component-did-mount',
@@ -16,12 +19,13 @@ export abstract class Block<Props extends BlockProps = BlockProps> {
   private readonly _props: Props;
   private readonly _children: Record<string, Block>;
   private readonly _lists: Record<string, Array<Block | string>>;
+  private readonly _state: State;
   private _element: HTMLElement;
   private _isUpdated: boolean = false;
   private _events: Record<string, EventListener>;
   private _eventBus: EventBus<typeof Block.EVENTS>;
 
-  constructor(propsAndChildren?: Props) {
+  constructor(propsAndChildren?: Props, state?: State) {
     const { children, props, events, lists } = this._parseProps(propsAndChildren || {});
 
     this._id = uuid();
@@ -29,7 +33,11 @@ export abstract class Block<Props extends BlockProps = BlockProps> {
     this._lists = lists;
     this._events = events;
     this._children = children;
-    this._props = this.makePropsProxy(props);
+    this._props = this.makePropsProxy<Props>(props);
+
+    if (state) {
+      this._state = this.makePropsProxy<State>(state);
+    }
 
     this._eventBus = new EventBus();
 
@@ -96,7 +104,7 @@ export abstract class Block<Props extends BlockProps = BlockProps> {
     });
   }
 
-  _parseProps(propsAndChildren: BlockProps) {
+  _parseProps(propsAndChildren: SimpleMap) {
     const props = <Props>{};
     const lists = <Record<string, Array<Block | string>>>{};
     const children = <Record<string, Block>>{};
@@ -135,7 +143,7 @@ export abstract class Block<Props extends BlockProps = BlockProps> {
   }
 
   compile(template: string) {
-    const propsAndStubs = <BlockProps>{ ...this._props };
+    const propsAndStubs = <SimpleMap>{ ...this._props };
 
     const childrenEntries = Object.entries(this._children);
     const listsEntries = Object.entries(this._lists);
@@ -192,7 +200,7 @@ export abstract class Block<Props extends BlockProps = BlockProps> {
     this._eventBus.emit(Block.EVENTS.EVENT_FLOW_CDM);
   }
 
-  _componentDidUpdate(oldProps: BlockProps, newProps: BlockProps) {
+  _componentDidUpdate(oldProps: SimpleMap, newProps: SimpleMap) {
     const isReRender = this.componentDidUpdate(oldProps, newProps);
 
     if (isReRender) {
@@ -200,7 +208,7 @@ export abstract class Block<Props extends BlockProps = BlockProps> {
     }
   }
 
-  componentDidUpdate(oldProps: BlockProps, newProps: BlockProps) {
+  componentDidUpdate(oldProps: SimpleMap, newProps: SimpleMap) {
     return !shallowEqual(oldProps, newProps);
   }
 
@@ -223,14 +231,34 @@ export abstract class Block<Props extends BlockProps = BlockProps> {
     this.dispatchChange(oldProps, props);
   }
 
-  dispatchChange(oldProps: BlockProps, newProps: BlockProps) {
+  getState() {
+    return this._state;
+  }
+
+  setState(state: State) {
+    if (!state) {
+      return;
+    }
+
+    const oldState = { ...this._state };
+
+    if (JSON.stringify(oldState) === JSON.stringify(state)) {
+      return;
+    }
+
+    Object.assign(this._state, state);
+
+    this.dispatchChange(oldState, state);
+  }
+
+  dispatchChange(oldProps: SimpleMap, newProps: SimpleMap) {
     if (this._isUpdated) {
       this._eventBus.emit(Block.EVENTS.EVENT_FLOW_CDU, oldProps, newProps);
       this._isUpdated = false;
     }
   }
 
-  makePropsProxy<PropsType extends BlockProps>(props: PropsType) {
+  makePropsProxy<PropsType extends SimpleMap>(props: PropsType) {
     return new Proxy(props, {
       get(target, prop) {
         const value = target[prop];
