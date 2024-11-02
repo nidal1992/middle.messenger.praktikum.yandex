@@ -15,11 +15,13 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^8.11.0",
-    "@typescript-eslint/parser": "^8.11.0",
+    "@types/handlebars": "^4.1.0",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/parser": "^7.18.0",
     "autoprefixer": "^10.4.19",
     "eslint": "^8.2.0",
     "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^18.0.0",
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.28.0",
@@ -34,6 +36,7 @@
   "dependencies": {
     "express": "^4.19.2",
     "handlebars": "^4.7.8",
-    "normalize.css": "^8.0.1"
+    "normalize.css": "^8.0.1",
+    "uuid": "^11.0.2"
   }
 }
