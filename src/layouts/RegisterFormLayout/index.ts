@@ -1,0 +1,1 @@
+export { RegisterFormLayout } from './RegisterFormLayout';
