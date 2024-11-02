@@ -3,8 +3,8 @@ import { Block } from '@/entites/Block';
 import { validateFieldsState, ValidationHandler } from '@/utils/validation';
 import { withPrevent } from '@/utils/withPrevent';
 
-import { schemas as sharedSchemas } from '@/schemas';
-import { ROUTES } from '@/routes';
+import { schemas as sharedSchemas } from '@/model/schemas.ts';
+import { ROUTES } from '@/model/routes.ts';
 
 import { Button } from '@/components/Button';
 import { Input } from '@/components/Input';
@@ -62,7 +62,7 @@ export class LoginForm extends Block<{}, LoginFormState> {
 
     const form = new Form({
       onSubmit: withPrevent(handleSubmit),
-      className: 'flex-col',
+      className: 'flex-col gap-10',
       children: [
         new Input({
           name: 'login',

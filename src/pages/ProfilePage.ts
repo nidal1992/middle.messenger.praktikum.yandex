@@ -3,7 +3,7 @@ import { KeyValue } from '@/components/KeyValue/KeyValue';
 import { Link } from '@/components/Link';
 import { SettingsPageLayout } from '@/layouts/SettingsPageLayout';
 import { Avatar } from '@/components/Avatar';
-import { ROUTES } from '@/routes.ts';
+import { ROUTES } from '@/model/routes.ts';
 import { parseUserData } from '@/utils/parseUserData.ts';
 
 const { avatar, ...user } = parseUserData({

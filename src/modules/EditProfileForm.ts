@@ -1,46 +1,44 @@
-import { Block } from '@/entites/Block';
-
 import { validateFieldsState, ValidationHandler } from '@/utils/validation';
 import { withPrevent } from '@/utils/withPrevent';
-import { schemas as sharedSchemas } from '@/model/schemas.ts';
-import { ROUTES } from '@/model/routes.ts';
+import { schemas as sharedSchemas } from '@/model/schemas';
+import { IUser } from '@/model/interfaces';
 
 import { FormLayout } from '@/layouts/FormLayout';
-import { Button } from '@/components/Button';
 import { Form } from '@/components/Form';
 import { Input } from '@/components/Input';
-import { Link } from '@/components/Link';
+import { Button } from '@/components/Button';
+import { Block } from '@/entites/Block';
 
-type Inputs = 'first_name' | 'second_name' | 'email' | 'phone' | 'login' | 'password';
-type RegisterSchema = Record<Inputs, ValidationHandler>;
-type RegisterFormState = FormState<Inputs>;
+type Inputs = 'first_name' | 'second_name' | 'email' | 'phone' | 'login' | 'display_name';
+type EditProfileSchema = Record<Inputs, ValidationHandler>;
+type EditProfileFormState = FormState<Inputs>;
 
-const schemas: RegisterSchema = {
+const schemas: EditProfileSchema = {
   login: sharedSchemas.login,
-  password: sharedSchemas.password,
+  display_name: sharedSchemas.display_name,
   first_name: sharedSchemas.first_name,
   second_name: sharedSchemas.second_name,
   email: sharedSchemas.email,
   phone: sharedSchemas.phone,
 };
 
-export class RegisterForm extends Block<{}, RegisterFormState> {
-  constructor() {
+export class EditProfileForm extends Block<{}, EditProfileFormState> {
+  constructor(props: IUser) {
     super(
       {},
       {
         login: { value: '' },
-        password: { value: '' },
-        first_name: { value: '' },
-        second_name: { value: '' },
-        email: { value: '' },
-        phone: { value: '' },
+        display_name: { value: props.display_name },
+        first_name: { value: props.first_name },
+        second_name: { value: props.second_name },
+        email: { value: props.email },
+        phone: { value: props.phone },
       },
     );
   }
 
   render(): HTMLElement {
-    const updateState = (newState: Partial<RegisterFormState>) => {
+    const updateState = (newState: Partial<EditProfileFormState>) => {
       this.setState({ ...this.getState(), ...newState });
     };
 
@@ -115,25 +113,19 @@ export class RegisterForm extends Block<{}, RegisterFormState> {
               onFocusout: handleFocusOut('login'),
             }),
             new Input({
-              name: 'password',
-              label: 'Password',
-              placeholder: 'Your passwword',
-              value: this.getState()?.password?.value,
-              error: this.getState()?.password?.error,
-              onFocusout: handleFocusOut('password'),
+              name: 'display_name',
+              label: 'Display Name',
+              placeholder: 'Your Display Name',
+              value: this.getState()?.display_name?.value,
+              error: this.getState()?.display_name?.error,
+              onFocusout: handleFocusOut('display_name'),
+            }),
+            new Button({
+              className: 'horizontal-center offset-top-20',
+              children: 'Save',
+              variant: 'primary',
             }),
           ],
-        }),
-        new Button({
-          children: 'Register',
-          className: 'horizontal-center',
-          variant: 'primary',
-        }),
-        new Link({
-          className: 'horizontal-center',
-          label: 'LOGIN',
-          href: ROUTES.LOGIN,
-          info: 'Do you have a profile?',
         }),
       ],
     });

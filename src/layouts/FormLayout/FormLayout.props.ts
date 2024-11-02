@@ -1,6 +1,6 @@
 import { Block } from '@/entites/Block';
 
-export type RegisterFormLayoutProps = {
+export type FormLayoutProps = {
   children: Block[];
   className?: string;
 };

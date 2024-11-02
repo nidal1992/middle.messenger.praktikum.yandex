@@ -1,4 +1,4 @@
-import { Schemas } from '@/schemas.ts';
+import { Schemas } from '@/model/schemas.ts';
 
 export type ValidationHandler = (value: string) => { isValid: boolean; message?: string };
 type SchemeFunction = ReturnType<typeof s>;

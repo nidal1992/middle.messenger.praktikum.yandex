@@ -36,4 +36,21 @@ export const schemas = {
         vars: [MAX_PASSWORD_LEN],
       }),
   ),
+  email(value: string): { isValid: boolean; message?: string } {
+    return { isValid: false };
+  },
+  first_name(value: string): { isValid: boolean; message?: string } {
+    return { isValid: false };
+  },
+  phone(value: string): { isValid: boolean; message?: string } {
+    return { isValid: false };
+  },
+  second_name(value: string): { isValid: boolean; message?: string } {
+    return { isValid: false };
+  },
+  display_name(value: string): { isValid: boolean; message?: string } {
+    return { isValid: false };
+  },
 };
+
+export type Schemas = typeof schemas;

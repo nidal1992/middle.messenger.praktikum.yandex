@@ -4,5 +4,5 @@ export type SettingsPageLayoutProps = {
   link: Block;
   avatar: Block;
   children: Block[];
-  controls: Block[];
+  controls?: Block[];
 };

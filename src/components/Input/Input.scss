@@ -5,10 +5,9 @@
   &__label {
     display: inline-block;
     margin-bottom: 5px;
-
     font-size: 14px;
-    color: var(--grey99);
-    text-shadow: 1px 1px var(--grey3c);
+    color: var(--grey-99);
+    text-shadow: 1px 1px var(--grey-3c);
   }
 
   &__icon {
@@ -20,7 +19,7 @@
     align-items: center;
     gap: 5px;
     padding: 8px 15px;
-    border: 1px solid var(--grey3c);
+    border: 1px solid var(--grey-3c);
     border-radius: 1px;
 
     &:has(input:focus) {
@@ -36,18 +35,19 @@
     padding: 0;
     border: none;
     width: 100%;
-
     font-size: 14px;
     color: var(--white);
-
     outline: none;
     background-color: transparent;
-    text-transform: uppercase;
 
     &::placeholder {
-      text-transform: inherit;
-      color: var(--grey3c);
+      color: var(--grey-3c);
     }
+  }
+
+  &__error {
+    font-size: 14px;
+    color: var(--red);
   }
 }
 

@@ -10,9 +10,11 @@ export const template = `
       <div class="settings-layout__link">
         {{{link}}}
       </div>
-      <div class="settings-layout__controls">
-        {{{controls}}}
-      </div>
+      {{#if controls}}
+        <div class="settings-layout__controls">
+          {{{controls}}}
+        </div>
+      {{/if}}
     </div>
   </main>
 `;

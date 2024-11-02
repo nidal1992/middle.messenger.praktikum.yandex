@@ -1,6 +1,6 @@
 import { Link } from '@/components/Link';
 import { Block } from '@/entites/Block';
-import { ROUTES } from '@/routes';
+import { ROUTES } from '@/model/routes.ts';
 
 import type { NavigationProps } from './Navigation.props';
 import { template } from './Navigation.template';
