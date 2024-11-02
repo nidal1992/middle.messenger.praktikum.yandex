@@ -1,3 +1,5 @@
+import { Schemas } from '@/schemas.ts';
+
 export type ValidationHandler = (value: string) => { isValid: boolean; message?: string };
 type SchemeFunction = ReturnType<typeof s>;
 type HandlerData<T = string> = {
@@ -99,4 +101,22 @@ export function s() {
 
 export function validator(schema: ReturnType<typeof s>) {
   return (value: string) => schema.__validate(value);
+}
+
+export function validateFieldsState<T extends string>(
+  schema: Partial<Schemas>,
+  state: FormState<T>,
+) {
+  const workState = { ...state };
+
+  Object.entries(schema).forEach(([key, sc]) => {
+    const field = workState[<T>key];
+    const { isValid, message } = sc(field.value);
+
+    if (!isValid) {
+      field.error = message;
+      workState.isValid = false;
+    }
+  });
+  return { state: workState };
 }

@@ -1,4 +1,4 @@
-export function shallowEqual(a: BlockProps, b: BlockProps): boolean {
+export function shallowEqual(a: SimpleMap, b: SimpleMap): boolean {
   if (Object.keys(a).length !== Object.keys(b).length) {
     return false;
   }

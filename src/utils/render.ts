@@ -1,6 +1,6 @@
 import { Block } from '@/entites/Block.ts';
 
-export function render(selector: string, block: Block<HTMLElement, any>): Element {
+export function render(selector: string, block: Block): Element {
   const root = document.querySelector(selector);
 
   if (!root) {
