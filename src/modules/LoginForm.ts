@@ -1,51 +1,34 @@
 import { Block } from '@/entites/Block';
 
-import { ValidationHandler } from '@/utils/validation';
+import { validateFieldsState, ValidationHandler } from '@/utils/validation';
 import { withPrevent } from '@/utils/withPrevent';
 
 import { schemas as sharedSchemas } from '@/schemas';
 import { ROUTES } from '@/routes';
 
-import { Button, Form, Input, Link } from '@/components';
+import { Button } from '@/components/Button';
+import { Input } from '@/components/Input';
+import { Link } from '@/components/Link';
+import { Form } from '@/components/Form';
 
 type Inputs = 'login' | 'password';
-type LoginFormState = Record<Inputs, { value: string; error?: string }> & { isValid?: boolean };
+type LoginSchema = Record<Inputs, ValidationHandler>;
+type LoginFormState = FormState<Inputs>;
 
-const schemas: Record<Inputs, ValidationHandler> = {
+const schemas: LoginSchema = {
   login: sharedSchemas.login,
   password: sharedSchemas.password,
 };
 
-export class LoginForm extends Block {
-  state: LoginFormState;
-
+export class LoginForm extends Block<{}, LoginFormState> {
   constructor() {
-    super();
-
-    this.state = this.makePropsProxy<LoginFormState>({
-      login: { value: '' },
-      password: { value: '' },
-    });
-  }
-
-  getState() {
-    return this.state;
-  }
-
-  setState(state: LoginFormState) {
-    if (!state) {
-      return;
-    }
-
-    const oldState = { ...this.state };
-
-    if (JSON.stringify(oldState) === JSON.stringify(state)) {
-      return;
-    }
-
-    Object.assign(this.state, state);
-
-    this.dispatchChange(oldState, state);
+    super(
+      {},
+      {
+        login: { value: '' },
+        password: { value: '' },
+      },
+    );
   }
 
   render(): HTMLElement {
@@ -67,23 +50,14 @@ export class LoginForm extends Block {
       };
 
     const handleSubmit = () => {
-      const newState: LoginFormState = { ...this.getState() };
-
-      console.log('submit');
-
-      Object.entries(schemas).forEach(([key, schema]) => {
-        const field = newState[<Inputs>key];
-        const { isValid, message } = schema(field.value);
-
-        if (!isValid) {
-          field.error = message;
-          newState.isValid = false;
-        }
-      });
-
-      if (!newState?.isValid) {
-        updateState(newState);
+      const { state } = validateFieldsState(schemas, this.getState());
+      console.log(state);
+      if (!state?.isValid) {
+        updateState(state);
+        return;
       }
+
+      console.log(state);
     };
 
     const form = new Form({
@@ -101,13 +75,13 @@ export class LoginForm extends Block {
         new Input({
           name: 'password',
           label: 'Password',
-          placeholder: 'Your passwword',
+          placeholder: 'Your password',
           value: this.getState()?.password?.value,
           error: this.getState()?.password?.error,
           onFocusout: handleFocusOut('password'),
         }),
         new Button({
-          children: 'Enter',
+          children: 'ENTER',
           className: 'horizontal-center',
           variant: 'primary',
         }),

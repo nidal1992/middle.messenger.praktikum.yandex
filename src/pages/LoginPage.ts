@@ -1,7 +1,7 @@
-import { AuthLayout } from '@/layouts';
-import { LoginForm } from '@/modules';
+import { AuthLayout } from '@/layouts/AuthLayout';
+import { LoginForm } from '@/modules/LoginForm';
 
-export const loginPage = new AuthLayout({
+export const LoginPage = new AuthLayout({
   title: 'Login',
   children: new LoginForm(),
 });
