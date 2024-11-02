@@ -1,0 +1,36 @@
+.content-center {
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 5px;
+}
+
+.wrapper {
+  border: 1px solid var(--grey-3c);
+  border-radius: 1px;
+  background-color: var(--dark-green);
+  padding: 10px;
+  width: 100%;
+
+  &--60-80 {
+    padding: 60px 80px;
+  }
+
+  &--20_20 {
+    padding: 20px;
+  }
+}
+
+.full {
+  width: 100%;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.horizontal-center {
+  margin-inline: auto;
+}
