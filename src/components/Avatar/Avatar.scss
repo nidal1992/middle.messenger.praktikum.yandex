@@ -1,5 +1,5 @@
 .avatar {
-  border: 1px solid var(--grey59);
+  border: 1px solid var(--grey-59);
   border-radius: 1px;
   font-size: 0;
   padding: 3px;
@@ -15,7 +15,7 @@
   &--big {
     position: relative;
     padding: 40px;
-    background-color: var(--grey3c);
+    background-color: var(--grey-3c);
     cursor: pointer;
     width: fit-content;
 
@@ -23,7 +23,7 @@
       content: 'Change avatar';
       position: absolute;
       inset: 0;
-      background-color: var(--grey26);
+      background-color: var(--grey-26);
       color: var(--white);
       font-size: 14px;
       text-align: center;

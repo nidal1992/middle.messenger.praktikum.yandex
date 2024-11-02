@@ -1,2 +1,4 @@
-declare type BlockProps = Record<string | symbol, unknown>;
-declare type BlockState<Type> = { value?: Type };
+declare type SimpleMap = Record<string | symbol, unknown>;
+declare type FormState<Keys extends string> = Record<Keys, { value: string; error?: string }> & {
+  isValid?: boolean;
+};

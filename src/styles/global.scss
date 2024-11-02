@@ -1,6 +1,7 @@
 @import url('normalize.css');
 @import url('./vars.scss');
 @import url('./typography.scss');
+@import url('./utils.scss');
 
 *,
 *::after,
@@ -62,9 +63,3 @@ input[type='number'] {
   border-radius: 4px;
 }
 
-.content-center {
-  display: grid;
-  place-content: center;
-  justify-items: center;
-  gap: 5px;
-}

@@ -3,4 +3,5 @@ export type LinkProps = {
   className?: string;
   variant?: 'ordinary' | 'arrow' | 'underline';
   label?: string;
+  info?: string;
 };

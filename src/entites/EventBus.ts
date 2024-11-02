@@ -1,6 +1,6 @@
 export default class EventBus<
   Events extends Record<string, string>,
-  EventsNames extends keyof Events = keyof Events,
+  EventsNames extends Events[keyof Events] = Events[keyof Events],
 > {
   readonly #listeners = <Record<EventsNames, Set<Function>>>{};
 

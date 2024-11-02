@@ -3,7 +3,6 @@
   border: none;
   border-radius: 1px;
   max-width: 150px;
-
   cursor: pointer;
   transition: 150ms ease-in;
 
@@ -31,7 +30,7 @@
     width: 33px;
     padding: 0;
     border-radius: 1px;
-    border: 1px solid var(--grey3c);
+    border: 1px solid var(--grey-3c);
     font-size: 0;
     background-color: transparent;
     cursor: pointer;
@@ -42,10 +41,10 @@
     }
 
     &:hover {
-      background-color: var(--grey3c);
+      background-color: var(--grey-3c);
 
       svg {
-        fill: var(--darkGreen);
+        fill: var(--dark-green);
       }
     }
   }

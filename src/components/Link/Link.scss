@@ -17,4 +17,10 @@
       display: initial;
     }
   }
+
+  &::before {
+    content: attr(data-info);
+    color: var(--grey-99);
+    text-decoration: none;
+  }
 }
