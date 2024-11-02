@@ -1,11 +1,10 @@
 {
   "compilerOptions": {
-    "target": "es2017",
+    "target": "ESNext",
     "lib": [
-      "es2017",
+      "ESNext",
       "dom"
     ],
-    "module": "commonjs",
     "skipLibCheck": true,
     "esModuleInterop": true,
     "strictBindCallApply": true,
@@ -17,10 +16,17 @@
     "noImplicitAny": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
+    "allowImportingTsExtensions": true,
     "sourceMap": true,
     "strictNullChecks": true,
-    "noImplicitThis": true,
-    "outDir": "build/",
+    "outDir": "dist/",
+    "moduleResolution": "Bundler",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    },
     "typeRoots": [
       "node_modules/@types/",
       "src/types"
