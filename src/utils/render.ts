@@ -1,5 +1,7 @@
 import { Block } from '@/entites/Block.ts';
 
+import { Navigation } from '@/modules/Navigation';
+
 export function render(selector: string, block: Block): Element {
   const root = document.querySelector(selector);
 
@@ -9,5 +11,7 @@ export function render(selector: string, block: Block): Element {
 
   root.append(block.getContent());
 
+  // временный роутинг
+  document.body.append(new Navigation().getContent());
   return root;
 }
