@@ -50,7 +50,7 @@ export class LoginForm extends Block<{}, LoginFormState> {
       };
 
     const handleSubmit = () => {
-      const { state } = validateFieldsState(schemas, this.getState());
+      const { state } = validateFieldsState<Inputs>(schemas, this.getState());
       console.log(state);
       if (!state?.isValid) {
         updateState(state);

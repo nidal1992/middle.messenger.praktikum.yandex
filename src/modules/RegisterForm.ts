@@ -58,7 +58,7 @@ export class RegisterForm extends Block<{}, RegisterFormState> {
       };
 
     const handleSubmit = () => {
-      const { state } = validateFieldsState(schemas, this.getState());
+      const { state } = validateFieldsState<Inputs>(schemas, this.getState());
 
       if (!state?.isValid) {
         updateState(state);
