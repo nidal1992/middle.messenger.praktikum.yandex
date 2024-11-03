@@ -23,7 +23,7 @@ const schema: ChangePasswordFormSchema = {
 };
 
 const { avatar } = parseUserData({
-  avatar: '/images/empty-img.png',
+  avatar: '/images/Empty-img.png',
   first_name: 'John',
   second_name: 'Dow',
   display_name: 'John Dow',

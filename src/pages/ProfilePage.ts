@@ -7,7 +7,7 @@ import { ROUTES } from '@/model/routes.ts';
 import { parseUserData } from '@/utils/parseUserData.ts';
 
 const { avatar, ...user } = parseUserData({
-  avatar: '/images/empty-img.png',
+  avatar: '/images/Empty-img.png',
   first_name: 'John',
   second_name: 'Dow',
   display_name: 'John Dow',
@@ -26,7 +26,7 @@ const rows = Object.entries(user).map(
 
 export const ProfilePage = new SettingsPageLayout({
   link: new Link({
-    href: ROUTES.MAIN,
+    href: ROUTES.CHAT,
     variant: 'arrow',
     label: 'back to chats',
   }),

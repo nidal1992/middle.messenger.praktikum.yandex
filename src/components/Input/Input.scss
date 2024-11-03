@@ -1,6 +1,7 @@
 .input {
   display: block;
   width: 100%;
+  height: fit-content;
 
   &__label {
     display: inline-block;
@@ -11,13 +12,13 @@
   }
 
   &__icon {
+    padding-left: 15px;
     font-size: 0;
   }
 
   &__element-wrapper {
     display: flex;
     align-items: center;
-    gap: 5px;
     border: 1px solid var(--grey-3c);
     border-radius: 1px;
 

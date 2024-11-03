@@ -39,8 +39,8 @@ export default defineConfig({
           'change-password-page',
           'index.html',
         ),
-        errorNotFound: resolve(__dirname, 'src', 'demonstrate-routes', 'error-404', 'index.html'),
-        serverErrorPage: resolve(__dirname, 'src', 'demonstrate-routes', 'error-500', 'index.html'),
+        errorNotFound: resolve(__dirname, 'src', 'demonstrate-routes', 'Error-404', 'index.html'),
+        serverErrorPage: resolve(__dirname, 'src', 'demonstrate-routes', 'Error-500', 'index.html'),
         chatMessageList: resolve(
           __dirname,
           'src',

@@ -1,0 +1,56 @@
+.message-row {
+  padding: 10px;
+  border-radius: 1px;
+  max-width: 45%;
+  background-color: var(--grey-3c);
+  width: fit-content;
+
+  &__message-text {
+    color: var(--white);
+    margin-bottom: 5px;
+  }
+
+  &__time {
+    font-size: 12px;
+    color: var(--grey-99);
+  }
+
+  &__additional-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: flex-end;
+  }
+
+  .seen-icon {
+    display: none;
+  }
+
+  .unseen-icon {
+    display: none;
+  }
+
+  &--mine {
+    margin-left: auto;
+    text-align: end;
+
+    .seen-icon {
+      display: none;
+    }
+
+    .unseen-icon {
+      display: block;
+    }
+
+    &--seen {
+      .seen-icon {
+        display: block;
+      }
+
+      .unseen-icon {
+        display: none;
+      }
+    }
+  }
+
+}
