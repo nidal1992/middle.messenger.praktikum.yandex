@@ -51,6 +51,8 @@
   }
 }
 
-.input.input--simple {
-  border: none;
+.input {
+  &--simple {
+    border: none;
+  }
 }

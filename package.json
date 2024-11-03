@@ -10,6 +10,7 @@
     "dev": "vite",
     "start": "npm run build && vite preview",
     "build": "vite build",
+    "lint": "npx eslint .",
     "format": "prettier --write .",
     "preview": "vite preview"
   },
@@ -30,7 +31,7 @@
     "stylelint": "^16.10.0",
     "stylelint-config-standard": "^36.0.1",
     "stylelint-scss": "^6.8.1",
-    "typescript": "^5.6.3",
+    "typescript": "~5.5",
     "vite": "^5.2.0"
   },
   "dependencies": {
