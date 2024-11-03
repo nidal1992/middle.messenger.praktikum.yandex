@@ -17,8 +17,6 @@
     "noImplicitAny": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noEmit": false,
-    "allowImportingTsExtensions": false,
     "sourceMap": true,
     "strictNullChecks": true,
     "outDir": "dist/",

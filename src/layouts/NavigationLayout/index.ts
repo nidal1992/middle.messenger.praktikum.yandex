@@ -1,1 +1,1 @@
-export { NavigationLayout } from './NavigationLayout.ts';
+export { NavigationLayout } from './NavigationLayout';
