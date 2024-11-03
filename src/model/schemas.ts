@@ -36,19 +36,19 @@ export const schemas = {
         vars: [MAX_PASSWORD_LEN],
       }),
   ),
-  email(value: string): { isValid: boolean; message?: string } {
+  email(): { isValid: boolean; message?: string } {
     return { isValid: false };
   },
-  first_name(value: string): { isValid: boolean; message?: string } {
+  first_name(): { isValid: boolean; message?: string } {
     return { isValid: false };
   },
-  phone(value: string): { isValid: boolean; message?: string } {
+  phone(): { isValid: boolean; message?: string } {
     return { isValid: false };
   },
-  second_name(value: string): { isValid: boolean; message?: string } {
+  second_name(): { isValid: boolean; message?: string } {
     return { isValid: false };
   },
-  display_name(value: string): { isValid: boolean; message?: string } {
+  display_name(): { isValid: boolean; message?: string } {
     return { isValid: false };
   },
 };
