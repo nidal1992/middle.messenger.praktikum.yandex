@@ -4,7 +4,7 @@ import { Input } from '@/components/Input';
 import { Button } from '@/components/Button';
 import { SendIcon } from '@/components/icons/SendIcon/SendIcon';
 import { PaperClipIcon } from '@/components/icons/PaperClipIcon';
-import { withPrevent } from '@/utils/withPrevent.ts';
+import { withPrevent } from '@/utils/withPrevent';
 
 export class MessageInput extends Block {
   render(): HTMLElement {

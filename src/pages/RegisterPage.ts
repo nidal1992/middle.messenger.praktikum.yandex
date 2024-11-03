@@ -1,5 +1,5 @@
 import { FormLayout } from '@/layouts/FormLayout';
-import { getAllInputsData } from '@/utils/getAllInputsData.ts';
+import { getAllInputsData } from '@/utils/getAllInputsData';
 import { validateAllFields, validateField, ValidationHandler } from '@/utils/validation';
 import { withPrevent } from '@/utils/withPrevent';
 

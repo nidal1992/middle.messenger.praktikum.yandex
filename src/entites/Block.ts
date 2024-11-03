@@ -1,6 +1,6 @@
 import Handlebars from 'handlebars';
 import { v4 as uuid } from 'uuid';
-import { shallowEqual } from '@/utils/shallowEqual.ts';
+import { shallowEqual } from '@/utils/shallowEqual';
 
 import EventBus from './EventBus';
 
@@ -65,7 +65,7 @@ export abstract class Block<Props extends SimpleMap = SimpleMap> {
   _render() {
     this._removeEvents();
 
-    // @ts-ignore логирование рендеринга компонента в деве
+    // @ts-expect-error-error
     if (import.meta.env.DEV) {
       console.log(`render component ${this.constructor.name.toUpperCase()}`);
     }
@@ -176,7 +176,7 @@ export abstract class Block<Props extends SimpleMap = SimpleMap> {
     childrenEntries.forEach(([, child]) => {
       const stub = fragment.content.querySelector(`[data-id="${child?._id}"]`);
       if (stub) {
-        stub.replaceWith(child?.getContent()!);
+        stub.replaceWith(child?.getContent());
       }
     });
 

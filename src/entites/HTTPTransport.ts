@@ -91,7 +91,8 @@ export class HTTPTransport {
       const stringify = (data: Record<string, unknown>) => {
         try {
           return JSON.stringify(data);
-        } catch (err) {
+        } catch (err: unknown) {
+          console.error(err);
           return '';
         }
       };

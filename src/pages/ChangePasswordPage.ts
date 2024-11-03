@@ -1,6 +1,6 @@
 import { ROUTES } from '@/model/routes';
 import { schemas as sharedSchemas } from '@/model/schemas';
-import { getAllInputsData } from '@/utils/getAllInputsData.ts';
+import { getAllInputsData } from '@/utils/getAllInputsData';
 
 import { validateAllFields, validateField, ValidationHandler } from '@/utils/validation';
 import { parseUserData } from '@/utils/parseUserData';

@@ -1,7 +1,7 @@
 import { Form } from '@/components/Form';
 import { schemas as sharedSchemas } from '@/model/schemas';
 import { ROUTES } from '@/model/routes';
-import { getAllInputsData } from '@/utils/getAllInputsData.ts';
+import { getAllInputsData } from '@/utils/getAllInputsData';
 import { validateAllFields, validateField, ValidationHandler } from '@/utils/validation';
 
 import { Avatar } from '@/components/Avatar';
@@ -10,7 +10,7 @@ import { Input } from '@/components/Input';
 import { Link } from '@/components/Link';
 import { FormLayout } from '@/layouts/FormLayout';
 import { SettingsPageLayout } from '@/layouts/SettingsPageLayout';
-import { withPrevent } from '@/utils/withPrevent.ts';
+import { withPrevent } from '@/utils/withPrevent';
 
 type Inputs = 'first_name' | 'second_name' | 'email' | 'phone' | 'login' | 'display_name';
 type EditProfileSchema = Record<Inputs, ValidationHandler>;

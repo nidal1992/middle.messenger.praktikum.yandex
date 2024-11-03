@@ -2,9 +2,9 @@ export default class EventBus<
   Events extends Record<string, string>,
   EventsNames extends Events[keyof Events] = Events[keyof Events],
 > {
-  readonly #listeners = <Record<EventsNames, Set<Function>>>{};
+  readonly #listeners = <Record<EventsNames, Set<() => void>>>{};
 
-  on(eventName: EventsNames, callback: Function): void {
+  on(eventName: EventsNames, callback: () => void): void {
     if (!this.#listeners[eventName]) {
       this.#listeners[eventName] = new Set();
     }
@@ -12,7 +12,7 @@ export default class EventBus<
     this.#listeners[eventName].add(callback);
   }
 
-  off(eventName: EventsNames, callback: Function): void {
+  off(eventName: EventsNames, callback: () => void): void {
     if (!this.#listeners[eventName]) {
       throw new Error(`Events ${String(eventName)} not found`);
     }
@@ -25,6 +25,8 @@ export default class EventBus<
       throw new Error(`Events ${String(eventName)} not found`);
     }
 
-    this.#listeners[eventName].forEach((listener: Function) => listener(...args));
+    this.#listeners[eventName].forEach((listener: (...args: unknown[]) => void) =>
+      listener(...args),
+    );
   }
 }

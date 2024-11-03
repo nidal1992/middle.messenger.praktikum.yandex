@@ -1,5 +1,5 @@
-import { Block } from '@/entites/Block.ts';
-import { ROUTES } from '@/model/routes.ts';
+import { Block } from '@/entites/Block';
+import { ROUTES } from '@/model/routes';
 
 import { Link } from '@/components/Link';
 import { NavigationLayout } from '@/layouts/NavigationLayout';

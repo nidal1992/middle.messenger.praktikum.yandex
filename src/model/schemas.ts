@@ -1,4 +1,4 @@
-import { s, validator } from '@/utils/validation.ts';
+import { s, validator } from '@/utils/validation';
 
 const MIN_LOGIN_LEN = 3;
 const MAX_LOGIN_LEN = 20;

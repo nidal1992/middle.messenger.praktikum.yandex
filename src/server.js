@@ -1,5 +1,6 @@
 import express from 'express';
 
+// eslint-disable-next-line no-undef
 const PORT = process.argv[2] || '3000';
 
 const app = express();
