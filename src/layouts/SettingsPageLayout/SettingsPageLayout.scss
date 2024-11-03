@@ -1,0 +1,27 @@
+.settings-layout {
+  height: 100svh;
+
+  &__wrapper {
+    display: grid;
+    justify-items: center;
+    gap: 20px;
+    min-width: 650px;
+  }
+
+  &__avatar-wrapper {
+    justify-self: center;
+  }
+
+  &__link {
+    position: fixed;
+    top: 40px;
+    left: 40px;
+  }
+
+  &__controls {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+  }
+}
