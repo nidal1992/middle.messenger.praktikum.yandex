@@ -10,8 +10,8 @@
     "dev": "vite",
     "start": "npm run build && vite preview",
     "build": "vite build",
-    "lint": "npx eslint .",
-    "format": "prettier --write .",
+    "lint": "npx eslint ./src",
+    "format": "prettier --write ./src",
     "preview": "vite preview"
   },
   "devDependencies": {
