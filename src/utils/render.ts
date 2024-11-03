@@ -1,4 +1,4 @@
-import { Block } from '@/entites/Block.ts';
+import { Block } from '@/entites/Block';
 
 import { Navigation } from '@/modules/Navigation';
 

@@ -1,5 +1,5 @@
 import { Input } from '@/components/Input';
-import { Block } from '@/entites/Block.ts';
+import { Block } from '@/entites/Block';
 
 export type ValidationHandler = (value: string) => { isValid: boolean; message?: string };
 type SchemeFunction = ReturnType<typeof s>;
@@ -11,7 +11,6 @@ type HandlerData<T = string> = {
 export function s() {
   const validationHandlers = new Set<ValidationHandler>();
 
-  // eslint-disable-next-line @typescript-eslint/naming-convention
   function __addHandler(predicate: (value: string) => boolean, message?: string) {
     validationHandlers.add((value) => {
       const result = {
@@ -30,7 +29,6 @@ export function s() {
     });
   }
 
-  // eslint-disable-next-line @typescript-eslint/naming-convention
   function __validate(value: string) {
     for (const cb of validationHandlers.values()) {
       const result = cb(value);

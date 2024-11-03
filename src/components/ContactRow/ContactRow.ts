@@ -1,7 +1,7 @@
 import { Block } from '@/entites/Block';
 
 import type { ContactRowProps } from './ContactRow.props';
-import { template } from './ContactRow.template.ts';
+import { template } from './ContactRow.template';
 
 export class ContactRow extends Block<ContactRowProps> {
   render(): string {

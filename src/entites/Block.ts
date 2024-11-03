@@ -43,7 +43,10 @@ export abstract class Block<Props extends SimpleMap = SimpleMap> {
     this._eventBus.on(Block.EVENTS.EVENT_INIT, this._init.bind(this));
     this._eventBus.on(Block.EVENTS.EVENT_FLOW_CDM, this._componentDidMount.bind(this));
     this._eventBus.on(Block.EVENTS.EVENT_FLOW_CDUNM, this._componentDidUnmount.bind(this));
-    this._eventBus.on(Block.EVENTS.EVENT_FLOW_CDU, this._componentDidUpdate.bind(this));
+    this._eventBus.on<(oldProps: SimpleMap, newProps: SimpleMap) => void>(
+      Block.EVENTS.EVENT_FLOW_CDU,
+      this._componentDidUpdate.bind(this),
+    );
     this._eventBus.on(Block.EVENTS.EVENT_FLOW_RENDER, this._render.bind(this));
   }
 

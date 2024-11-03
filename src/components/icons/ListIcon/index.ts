@@ -1,1 +1,1 @@
-export { ListIcon } from './ListIcon.ts';
+export { ListIcon } from './ListIcon';

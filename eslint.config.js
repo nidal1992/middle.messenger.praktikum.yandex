@@ -11,4 +11,9 @@ export default [
   {
     ignores: ['dist/*', 'node_modules/*', 'vite.config.js'],
   },
+  {
+    rules: {
+      '@typescript-eslint/no-unsafe-function-type': 0,
+    },
+  },
 ];
