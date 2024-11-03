@@ -5,7 +5,7 @@
   padding: 15px;
 
   &:not(:last-child) {
-    border-bottom: 1px solid var(--grey26);
+    border-bottom: 1px solid var(--grey-26);
   }
 }
 
@@ -15,6 +15,6 @@
 
   span {
     font-size: 14px;
-    color: var(--grey3c);
+    color: var(--grey-3c);
   }
 }

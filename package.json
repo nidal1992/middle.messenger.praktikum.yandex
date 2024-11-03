@@ -10,7 +10,6 @@
     "dev": "vite",
     "start": "npm run build && vite preview",
     "build": "vite build",
-    "lint": "npx stylelint \"**/*.scss\" | ",
     "format": "prettier --write .",
     "preview": "vite preview"
   },

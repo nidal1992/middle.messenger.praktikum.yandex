@@ -1,4 +1,5 @@
-import { Schemas } from '@/model/schemas.ts';
+import { Input } from '@/components/Input';
+import { Block } from '@/entites/Block.ts';
 
 export type ValidationHandler = (value: string) => { isValid: boolean; message?: string };
 type SchemeFunction = ReturnType<typeof s>;
@@ -103,20 +104,25 @@ export function validator(schema: ReturnType<typeof s>) {
   return (value: string) => schema.__validate(value);
 }
 
-export function validateFieldsState<T extends string>(
-  schema: Partial<Schemas>,
-  state: FormState<T>,
-) {
-  const workState = { ...state };
+export function validateField(input: Block, value: string, validation: ValidationHandler) {
+  const { message } = validation(value);
 
-  Object.entries(schema).forEach(([key, sc]) => {
-    const field = workState[<T>key];
-    const { isValid, message } = sc(field.value);
+  const validationResult = {
+    value,
+    error: message,
+  };
 
-    if (!isValid) {
-      field.error = message;
-      workState.isValid = false;
-    }
+  input.setProps(validationResult);
+
+  return validationResult;
+}
+
+export function validateAllFields(inputs: Input[], schema: Record<string, ValidationHandler>) {
+  const validationResults = inputs.map((input) => {
+    const { name, value } = input.getProps();
+    const { error } = validateField(input, value!, schema[name!]);
+    return !error;
   });
-  return { state: workState };
+
+  return validationResults.every(Boolean);
 }

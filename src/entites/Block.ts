@@ -4,14 +4,12 @@ import { shallowEqual } from '@/utils/shallowEqual.ts';
 
 import EventBus from './EventBus';
 
-export abstract class Block<
-  Props extends SimpleMap = SimpleMap,
-  State extends SimpleMap = SimpleMap,
-> {
+export abstract class Block<Props extends SimpleMap = SimpleMap> {
   static EVENTS = {
     EVENT_INIT: 'init',
     EVENT_FLOW_CDM: 'flow:component-did-mount',
     EVENT_FLOW_CDU: 'flow:component-did-update',
+    EVENT_FLOW_CDUNM: 'flow:component-did-unmount',
     EVENT_FLOW_RENDER: 'flow:component-did-render',
   } as const;
 
@@ -19,13 +17,12 @@ export abstract class Block<
   private readonly _props: Props;
   private readonly _children: Record<string, Block>;
   private readonly _lists: Record<string, Array<Block | string>>;
-  private readonly _state: State;
   private _element: HTMLElement;
   private _isUpdated: boolean = false;
   private _events: Record<string, EventListener>;
   private _eventBus: EventBus<typeof Block.EVENTS>;
 
-  constructor(propsAndChildren?: Props, state?: State) {
+  constructor(propsAndChildren?: Props) {
     const { children, props, events, lists } = this._parseProps(propsAndChildren || {});
 
     this._id = uuid();
@@ -34,10 +31,6 @@ export abstract class Block<
     this._events = events;
     this._children = children;
     this._props = this.makePropsProxy<Props>(props);
-
-    if (state) {
-      this._state = this.makePropsProxy<State>(state);
-    }
 
     this._eventBus = new EventBus();
 
@@ -49,6 +42,7 @@ export abstract class Block<
   _registerEvents() {
     this._eventBus.on(Block.EVENTS.EVENT_INIT, this._init.bind(this));
     this._eventBus.on(Block.EVENTS.EVENT_FLOW_CDM, this._componentDidMount.bind(this));
+    this._eventBus.on(Block.EVENTS.EVENT_FLOW_CDUNM, this._componentDidUnmount.bind(this));
     this._eventBus.on(Block.EVENTS.EVENT_FLOW_CDU, this._componentDidUpdate.bind(this));
     this._eventBus.on(Block.EVENTS.EVENT_FLOW_RENDER, this._render.bind(this));
   }
@@ -189,6 +183,14 @@ export abstract class Block<
     return fragment.content;
   }
 
+  _componentDidUnmount() {
+    this.componentDidUnmount();
+
+    this._eventBus.emit(Block.EVENTS.EVENT_FLOW_RENDER);
+  }
+
+  componentDidUnmount() {}
+
   _componentDidMount() {
     this.componentDidMount();
     this._eventBus.emit(Block.EVENTS.EVENT_FLOW_RENDER);
@@ -204,7 +206,7 @@ export abstract class Block<
     const isReRender = this.componentDidUpdate(oldProps, newProps);
 
     if (isReRender) {
-      this._eventBus.emit(Block.EVENTS.EVENT_FLOW_RENDER);
+      this._eventBus.emit(Block.EVENTS.EVENT_FLOW_CDUNM);
     }
   }
 
@@ -228,30 +230,7 @@ export abstract class Block<
     if (Object.values(props).length) {
       Object.assign(this._props, props);
     }
-    this.dispatchChange(oldProps, props);
-  }
 
-  getState() {
-    return this._state;
-  }
-
-  setState(state: State) {
-    if (!state) {
-      return;
-    }
-
-    const oldState = { ...this._state };
-
-    if (JSON.stringify(oldState) === JSON.stringify(state)) {
-      return;
-    }
-
-    Object.assign(this._state, state);
-
-    this.dispatchChange(oldState, state);
-  }
-
-  dispatchChange(oldProps: SimpleMap, newProps: SimpleMap) {
     if (this._isUpdated) {
       this._eventBus.emit(Block.EVENTS.EVENT_FLOW_CDU, oldProps, newProps);
       this._isUpdated = false;

@@ -16,7 +16,7 @@ export default function handlebars() {
 
                 export default Handlebars.template(${Handlebars.precompile(src)});
             `;
-
+      Handlebars.template(Handlebars.precompile(src));
       return { code };
     },
   };
