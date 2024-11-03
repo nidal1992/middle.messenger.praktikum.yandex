@@ -3,6 +3,10 @@
   width: 100%;
   height: fit-content;
 
+  &--simple {
+    border: none;
+  }
+
   &__label {
     display: inline-block;
     margin-bottom: 5px;
@@ -51,8 +55,3 @@
   }
 }
 
-.input {
-  &--simple {
-    border: none;
-  }
-}
