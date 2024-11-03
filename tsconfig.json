@@ -1,7 +1,10 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "lib": ["ESNext", "dom"],
+    "lib": [
+      "ESNext",
+      "dom"
+    ],
     "module": "ESNext",
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -20,9 +23,20 @@
     "moduleResolution": "Bundler",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": [
+        "./src/*"
+      ]
     },
-    "typeRoots": ["node_modules/@types/", "src/types", "shared.d.ts"]
+    "typeRoots": [
+      "node_modules/@types/",
+      "src/types",
+      "shared.d.ts"
+    ]
   },
-  "exclude": ["node_modules/", "dist/", "public/"]
+  "exclude": [
+    "node_modules/",
+    "dist/",
+    "public/"
+  ]
 }
+
