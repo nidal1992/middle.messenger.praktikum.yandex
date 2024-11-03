@@ -1,0 +1,24 @@
+<label class="input {{#if @partial-block }} input--icon{{/if}}{{#if label }} input--label{{/if}} {{ className }}">
+  {{#if label }}
+    <span class="input__label">
+      {{ label }}
+    </span>
+  {{/if}}
+  
+  <div class="input__element-wrapper">
+    {{#if @partial-block }}
+      <span class="input__icon">
+        {{> @partial-block }}
+      </span>
+    {{/if}}
+
+    <input 
+      id="{{ name }}" 
+      name="{{ name }}" 
+      {{#if type}}type="{{ type }}"{{/if}}
+      placeholder="{{ placeholder }}"
+      class="input__element"
+      {{#if required}}required{{/if}}
+    >
+  </div>
+</label>

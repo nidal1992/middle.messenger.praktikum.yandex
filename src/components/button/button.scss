@@ -1,0 +1,52 @@
+.button {
+  padding: 7px 50px;
+  border: none;
+  border-radius: 1px;
+  max-width: 150px;
+
+  cursor: pointer;
+  transition: 150ms ease-in;
+
+  &--primary {
+    background-color: var(--blue);
+
+    &:hover {
+      box-shadow: 0 0 30px -7px var(--blue);
+    }
+  }
+
+  &--failure {
+    background-color: var(--red);
+
+    &:hover {
+      box-shadow: 0 0 30px -7px var(--red);
+    }
+  }
+
+  &--icon {
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    height: 33px;
+    width: 33px;
+    padding: 0;
+    border-radius: 1px;
+    border: 1px solid var(--grey3c);
+    font-size: 0;
+    background-color: transparent;
+    cursor: pointer;
+
+    &,
+    svg {
+      transition: 200ms ease-in-out;
+    }
+
+    &:hover {
+      background-color: var(--grey3c);
+
+      svg {
+        fill: var(--darkGreen);
+      }
+    }
+  }
+}

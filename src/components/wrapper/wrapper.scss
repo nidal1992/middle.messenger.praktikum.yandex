@@ -1,0 +1,18 @@
+.wrapper {
+  border: 1px solid var(--grey3c);
+  border-radius: 1px;
+
+  background-color: var(--darkGreen);
+
+  &.padding--60_80 {
+    padding: 60px 80px;
+  }
+
+  &.padding--20_20 {
+    padding: 20px;
+  }
+
+  &.padding--10_10 {
+    padding: 10px;
+  }
+}

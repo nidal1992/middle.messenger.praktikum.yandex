@@ -1,0 +1,11 @@
+{{#>Wrapper padding="10_10" className="message-input"}}
+  {{#>Button}}
+    {{>PaperclipIcon}}
+  {{/Button}}
+  <form id="message-form" class="message-input__form">
+    {{>Input placeholder="Enter message..." className="" name="message"}}
+  </form>
+  {{#>Button form="message-form"}}
+    {{>SendIcon}}
+  {{/Button}}
+{{/Wrapper}}

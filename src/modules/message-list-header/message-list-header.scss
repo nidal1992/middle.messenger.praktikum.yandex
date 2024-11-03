@@ -1,0 +1,15 @@
+.message-list-header {
+  &__container,
+  &__user-row {
+    display: flex;
+  }
+
+  &__container {
+    justify-content: space-between;
+  }
+
+  &__user-row {
+    align-items: center;
+    gap: 10px;
+  }
+}
