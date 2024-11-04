@@ -1,0 +1,56 @@
+.input {
+  display: block;
+  width: 100%;
+  height: fit-content;
+
+  &--simple {
+    border: none;
+  }
+
+  &__label {
+    display: inline-block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: var(--grey-99);
+    text-shadow: 1px 1px var(--grey-3c);
+  }
+
+  &__icon {
+    padding-left: 15px;
+    font-size: 0;
+  }
+
+  &__element-wrapper {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--grey-3c);
+    border-radius: 1px;
+
+    &:has(input:focus) {
+      border-color: var(--blue);
+    }
+
+    &:has(input:focus) svg path {
+      fill: var(--white);
+    }
+  }
+
+  &__element {
+    border: none;
+    width: 100%;
+    padding: 8px 15px;
+    font-size: 14px;
+    color: var(--white);
+    outline: none;
+    background-color: transparent;
+
+    &::placeholder {
+      color: var(--grey-3c);
+    }
+  }
+
+  &__error {
+    font-size: 14px;
+    color: var(--red);
+  }
+}
