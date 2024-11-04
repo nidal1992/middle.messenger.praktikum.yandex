@@ -28,10 +28,10 @@ const { avatar, ...user } = {
   avatar: '/images/Empty-img.png',
   first_name: 'John',
   second_name: 'Dow',
-  display_name: 'John Dow',
+  display_name: 'John_Dow',
   login: 'john_dow',
   email: 'john_dow@gmail.com',
-  phone: '+7 999 999-99-99',
+  phone: '+79999999999',
 };
 
 const inputs = [
