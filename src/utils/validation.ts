@@ -46,7 +46,7 @@ export function s() {
   }
 
   function latin({ message }: HandlerData): SchemeFunction {
-    __addHandler((val) => !val.replaceAll(/[^а-я]/gi, '').length, message);
+    __addHandler((val) => !val.replaceAll(/[^а-яё]/gi, '').length, message);
     return this;
   }
 
@@ -66,10 +66,52 @@ export function s() {
 
   function notSpecSymbols({ message, vars = [] }: HandlerData): SchemeFunction {
     __addHandler((val) => {
-      const regExp = new RegExp(`[^a-zа-я0-9${vars.join('')}]`, 'gi');
+      const regExp = new RegExp(`[^a-zа-яё0-9${vars.join('')}]`, 'gi');
       return !regExp.test(val);
     }, message);
 
+    return this;
+  }
+
+  function atLeastOneLatinCapitalLetter({ message }: HandlerData): SchemeFunction {
+    __addHandler((val) => {
+      return /[A-Z]/.test(val);
+    }, message);
+    return this;
+  }
+
+  function atLeastOneDigit({ message }: HandlerData): SchemeFunction {
+    __addHandler((val) => {
+      return /\d/.test(val);
+    }, message);
+    return this;
+  }
+
+  function email({ message }: HandlerData): SchemeFunction {
+    __addHandler((val) => {
+      return /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(val);
+    }, message);
+    return this;
+  }
+
+  function phone({ message }: HandlerData): SchemeFunction {
+    __addHandler((val) => {
+      return /^\+?\d{10,15}$/.test(val);
+    }, message);
+    return this;
+  }
+
+  function onlyLetters({ message }: HandlerData): SchemeFunction {
+    __addHandler((value) => {
+      return !/\d/.test(value);
+    }, message);
+    return this;
+  }
+
+  function firstCapitalLetter({ message }: HandlerData): SchemeFunction {
+    __addHandler((value) => {
+      return /^[A-ZА-ЯЁ]/.test(value);
+    }, message);
     return this;
   }
 
@@ -87,12 +129,18 @@ export function s() {
   }
 
   return {
+    onlyLetters,
+    email,
+    phone,
     latin,
     required,
     minLength,
     spaceFree,
     maxLength,
-    notAllDigit: notOnlyDigit,
+    firstCapitalLetter,
+    notOnlyDigit,
+    atLeastOneDigit,
+    atLeastOneLatinCapitalLetter,
     notSpecSymbols,
     __validate,
   };
