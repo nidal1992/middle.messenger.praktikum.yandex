@@ -1,5 +1,6 @@
 import { Input } from '@/components/Input';
 
+// TODO: перенести в компонент Form
 export const getAllInputsData = (inputs: Input[]) =>
   inputs.reduce(
     (result, input) => {
