@@ -1,30 +1,14 @@
-import { Form } from '@/components/Form';
-import { schemas as sharedSchemas } from '@/model/schemas';
+import { schemas } from '@/model/schemas';
 import { ROUTES } from '@/model/routes';
-import { getAllInputsData } from '@/utils/getAllInputsData';
-import { validateAllFields, validateField, ValidationHandler } from '@/utils/validation';
 
+import { SettingsPageLayout } from '@/layouts/SettingsPageLayout';
 import { Avatar } from '@/components/Avatar';
 import { Button } from '@/components/Button';
 import { Input } from '@/components/Input';
 import { Link } from '@/components/Link';
-import { FormLayout } from '@/layouts/FormLayout';
-import { SettingsPageLayout } from '@/layouts/SettingsPageLayout';
-import { withPrevent } from '@/utils/withPrevent';
+import { Form } from '@/components/Form';
 
-type Inputs = 'first_name' | 'second_name' | 'email' | 'phone' | 'login' | 'display_name';
-type EditProfileSchema = Record<Inputs, ValidationHandler>;
-
-const schema: EditProfileSchema = {
-  login: sharedSchemas.login,
-  display_name: sharedSchemas.display_name,
-  first_name: sharedSchemas.first_name,
-  second_name: sharedSchemas.second_name,
-  email: sharedSchemas.email,
-  phone: sharedSchemas.phone,
-};
-
-const { avatar, ...user } = {
+const user = {
   avatar: '/images/Empty-img.png',
   first_name: 'John',
   second_name: 'Dow',
@@ -34,91 +18,92 @@ const { avatar, ...user } = {
   phone: '+79999999999',
 };
 
-const inputs = [
-  new Input({
-    name: 'first_name',
-    label: 'First name',
-    placeholder: 'Your First name',
-    value: user.first_name,
-    error: '',
-    onFocusout(e) {
-      const { value } = <HTMLInputElement>e.target;
-      validateField(this, value, schema.first_name);
-    },
-  }),
-  new Input({
-    name: 'second_name',
-    label: 'Second name',
-    placeholder: 'Your Second name',
-    value: user.second_name,
-    error: '',
-    onFocusout(e) {
-      const { value } = <HTMLInputElement>e.target;
-      validateField(this, value, schema.second_name);
-    },
-  }),
-  new Input({
-    name: 'display_name',
-    label: 'Display Name',
-    placeholder: 'Your Display Name',
-    value: user.display_name,
-    error: '',
-    onFocusout(e) {
-      const { value } = <HTMLInputElement>e.target;
-      validateField(this, value, schema.display_name);
-    },
-  }),
-  new Input({
-    name: 'login',
-    label: 'Login',
-    placeholder: 'Your login',
-    value: user.login,
-    error: '',
-    onFocusout(e) {
-      const { value } = <HTMLInputElement>e.target;
-      validateField(this, value, schema.login);
-    },
-  }),
-  new Input({
-    name: 'email',
-    label: 'Email',
-    placeholder: 'Your Email',
-    value: user.email,
-    error: '',
-    onFocusout(e) {
-      const { value } = <HTMLInputElement>e.target;
-      validateField(this, value, schema.email);
-    },
-  }),
-  new Input({
-    name: 'phone',
-    label: 'Phone',
-    placeholder: 'Your Phone',
-    value: user.phone,
-    error: '',
-    onFocusout(e) {
-      const { value } = <HTMLInputElement>e.target;
-      validateField(this, value, schema.phone);
-    },
-  }),
-];
+function handleFocusOut(e: Event): void {
+  const { value } = <HTMLInputElement>e.target;
+  this.validate(value);
+}
 
-function handleSubmit() {
-  const isFieldsValid = validateAllFields(inputs, schema);
+function handleSubmit(e: Event): void {
+  e.preventDefault();
+
+  const inputs = this.getLists().inputs as Input[];
+
+  const isFieldsValid = inputs
+    .map((input) => Boolean(input.validate(input.getProps().value!)))
+    .every(Boolean);
 
   if (isFieldsValid) {
-    const data = getAllInputsData(inputs);
-
-    console.log(data);
+    console.log(this.allValues());
   }
 }
 
-const form = new Form({
-  onSubmit: withPrevent(handleSubmit),
+export const EditProfilePage = new SettingsPageLayout({
+  avatar: new Avatar({
+    src: user.avatar,
+    big: true,
+  }),
+  link: new Link({
+    href: ROUTES.PROFILE,
+    label: 'Back to Profile',
+    variant: 'arrow',
+  }),
   children: [
-    new FormLayout({
+    new Form({
+      inputsLayout: 'col-2',
+      onSubmit: handleSubmit,
+
+      inputs: [
+        new Input({
+          name: 'first_name',
+          label: 'First name',
+          placeholder: 'Your First name',
+          value: user.first_name,
+          schema: schemas.first_name,
+          onFocusout: handleFocusOut,
+        }),
+        new Input({
+          name: 'second_name',
+          label: 'Second name',
+          placeholder: 'Your Second name',
+          value: user.second_name,
+          schema: schemas.second_name,
+          onFocusout: handleFocusOut,
+        }),
+        new Input({
+          name: 'display_name',
+          label: 'Display Name',
+          placeholder: 'Your Display Name',
+          value: user.display_name,
+          schema: schemas.display_name,
+          onFocusout: handleFocusOut,
+        }),
+        new Input({
+          name: 'login',
+          label: 'Login',
+          placeholder: 'Your login',
+          value: user.login,
+          schema: schemas.login,
+          onFocusout: handleFocusOut,
+        }),
+        new Input({
+          name: 'email',
+          label: 'Email',
+          placeholder: 'Your Email',
+          value: user.email,
+          schema: schemas.email,
+          onFocusout: handleFocusOut,
+        }),
+        new Input({
+          name: 'phone',
+          label: 'Phone',
+          placeholder: 'Your Phone',
+          value: user.phone,
+          schema: schemas.phone,
+          onFocusout: handleFocusOut,
+        }),
+      ],
+
       children: [
-        ...inputs,
         new Button({
           children: 'SAVE',
           variant: 'primary',
@@ -127,17 +112,4 @@ const form = new Form({
       ],
     }),
   ],
-});
-
-export const EditProfilePage = new SettingsPageLayout({
-  avatar: new Avatar({
-    src: avatar,
-    big: true,
-  }),
-  link: new Link({
-    href: ROUTES.PROFILE,
-    label: 'Back to Profile',
-    variant: 'arrow',
-  }),
-  children: [form],
 });

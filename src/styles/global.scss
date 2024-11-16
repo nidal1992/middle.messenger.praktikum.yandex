@@ -3,13 +3,6 @@
 @import url('./typography.scss');
 @import url('./utils.scss');
 
-*,
-*::after,
-*::before {
-  box-sizing: border-box;
-  letter-spacing: 0.1em;
-}
-
 html {
   font-family: 'VT323', monospace;
   font-weight: 400;
@@ -19,6 +12,13 @@ html {
 
 body {
   background-color: var(--black);
+
+  *,
+  *::after,
+  *::before {
+    box-sizing: border-box;
+    letter-spacing: 0.1em;
+  }
 }
 
 h1,

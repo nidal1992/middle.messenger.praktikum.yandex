@@ -1,0 +1,24 @@
+.form {
+  &__inputs {
+    display: grid;
+    gap: 10px;
+  }
+
+  .row {
+    width: 100%;
+  }
+
+  .col {
+    grid-template-columns: minmax(300px, 1fr);
+    margin-bottom: 10px;
+  }
+
+  .col-2 {
+    grid-template-columns: minmax(250px, 1fr) minmax(250px, 1fr);
+    margin-bottom: 10px;
+
+    @media (width <= 520px) {
+      grid-template-columns: minmax(250px, 1fr);
+    }
+  }
+}

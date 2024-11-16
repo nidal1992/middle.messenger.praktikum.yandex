@@ -3,12 +3,10 @@
 
   &__form-wrapper {
     display: grid;
-    justify-items: center;
     gap: 20px;
-    min-width: 500px;
+  }
 
-    &__title {
-      text-align: center;
-    }
+  &__title {
+    text-align: center;
   }
 }

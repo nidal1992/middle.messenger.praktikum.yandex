@@ -1,10 +1,7 @@
 import { ROUTES } from '@/model/routes';
-import { schemas as sharedSchemas } from '@/model/schemas';
-import { getAllInputsData } from '@/utils/getAllInputsData';
+import { schemas } from '@/model/schemas';
 
-import { validateAllFields, validateField, ValidationHandler } from '@/utils/validation';
 import { parseUserData } from '@/utils/parseUserData';
-import { withPrevent } from '@/utils/withPrevent';
 
 import { SettingsPageLayout } from '@/layouts/SettingsPageLayout';
 import { Input } from '@/components/Input';
@@ -12,15 +9,6 @@ import { Avatar } from '@/components/Avatar';
 import { Link } from '@/components/Link';
 import { Button } from '@/components/Button';
 import { Form } from '@/components/Form';
-
-type Inputs = 'old_password' | 'repeat_password' | 'password';
-type ChangePasswordFormSchema = Record<Inputs, ValidationHandler>;
-
-const schema: ChangePasswordFormSchema = {
-  password: sharedSchemas.password,
-  repeat_password: sharedSchemas.password,
-  old_password: sharedSchemas.password,
-};
 
 const { avatar } = parseUserData({
   avatar: '/images/Empty-img.png',
@@ -32,44 +20,19 @@ const { avatar } = parseUserData({
   phone: '+7 999 999-99-99',
 });
 
-const inputs = [
-  new Input({
-    name: 'old_password',
-    label: 'Old password',
-    placeholder: 'Your Old password',
-    value: '',
-    error: '',
-    onFocusout(e) {
-      const { value } = <HTMLInputElement>e.target;
-      validateField(this, value, schema.old_password);
-    },
-  }),
-  new Input({
-    name: 'password',
-    label: 'New password',
-    placeholder: 'Your New password',
-    value: '',
-    error: '',
-    onFocusout(e) {
-      const { value } = <HTMLInputElement>e.target;
-      validateField(this, value, schema.password);
-    },
-  }),
-  new Input({
-    name: 'repeat_password',
-    label: 'Repeat new password',
-    placeholder: 'Repeat new password',
-    value: '',
-    error: '',
-    onFocusout(e) {
-      const { value } = <HTMLInputElement>e.target;
-      validateField(this, value, schema.repeat_password);
-    },
-  }),
-];
+function handleFocusOut(e: Event): void {
+  const { value } = <HTMLInputElement>e.target;
+  this.validate(value);
+}
 
-function handleSubmit() {
-  const isFieldsValid = validateAllFields(inputs, schema);
+function handleSubmit(e: Event) {
+  e.preventDefault();
+
+  const inputs = this.getLists().inputs as Input[];
+
+  const isFieldsValid = inputs
+    .map((input) => Boolean(input.validate(input.getProps().value!)))
+    .every(Boolean);
 
   const isOldPasswordValid = !inputs[0].getProps().error;
   const passwordMatch = inputs[1].getProps().value === inputs[2].getProps().value;
@@ -81,23 +44,9 @@ function handleSubmit() {
   }
 
   if (isFieldsValid) {
-    const data = getAllInputsData(inputs);
-    console.log(data);
+    console.log(this.allValues());
   }
 }
-
-const form = new Form({
-  className: 'flex-col gap-10',
-  onSubmit: withPrevent(handleSubmit),
-  children: [
-    ...inputs,
-    new Button({
-      children: 'SAVE',
-      className: 'horizontal-center offset-top-20',
-      variant: 'primary',
-    }),
-  ],
-});
 
 export const ChangePasswordPage = new SettingsPageLayout({
   avatar: new Avatar({
@@ -109,5 +58,47 @@ export const ChangePasswordPage = new SettingsPageLayout({
     label: 'Back to Profile',
     variant: 'arrow',
   }),
-  children: [form],
+
+  children: [
+    new Form({
+      className: 'flex-col gap-10',
+      inputsLayout: 'col',
+      onSubmit: handleSubmit,
+
+      inputs: [
+        new Input({
+          name: 'old_password',
+          label: 'Old password',
+          type: 'password',
+          placeholder: 'Your Old password',
+          schema: schemas.password,
+          onFocusout: handleFocusOut,
+        }),
+        new Input({
+          name: 'password',
+          label: 'New password',
+          type: 'password',
+          placeholder: 'Your New password',
+          schema: schemas.password,
+          onFocusout: handleFocusOut,
+        }),
+        new Input({
+          name: 'repeat_password',
+          label: 'Repeat new password',
+          type: 'password',
+          placeholder: 'Repeat new password',
+          schema: schemas.password,
+          onFocusout: handleFocusOut,
+        }),
+      ],
+
+      children: [
+        new Button({
+          children: 'SAVE',
+          className: 'horizontal-center offset-top-20',
+          variant: 'primary',
+        }),
+      ],
+    }),
+  ],
 });

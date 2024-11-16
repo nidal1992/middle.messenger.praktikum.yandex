@@ -1,8 +1,7 @@
-import { Input } from '@/components/Input';
-import { Block } from '@/entites/Block';
-
 export type ValidationHandler = (value: string) => { isValid: boolean; message?: string };
+
 type SchemeFunction = ReturnType<typeof s>;
+
 type HandlerData<T = string> = {
   message?: string;
   vars?: T[];
@@ -148,27 +147,4 @@ export function s() {
 
 export function validator(schema: ReturnType<typeof s>) {
   return (value: string) => schema.__validate(value);
-}
-
-export function validateField(input: Block, value: string, validation: ValidationHandler) {
-  const { message } = validation(value);
-
-  const validationResult = {
-    value,
-    error: message,
-  };
-
-  input.setProps(validationResult);
-
-  return validationResult;
-}
-
-export function validateAllFields(inputs: Input[], schema: Record<string, ValidationHandler>) {
-  const validationResults = inputs.map((input) => {
-    const { name, value } = input.getProps();
-    const { error } = validateField(input, value!, schema[name!]);
-    return !error;
-  });
-
-  return validationResults.every(Boolean);
 }

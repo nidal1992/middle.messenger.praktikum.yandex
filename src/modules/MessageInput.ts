@@ -2,9 +2,9 @@ import { Block } from '@/entites/Block';
 import { Form } from '@/components/Form';
 import { Input } from '@/components/Input';
 import { Button } from '@/components/Button';
+
 import { SendIcon } from '@/components/icons/SendIcon/SendIcon';
 import { PaperClipIcon } from '@/components/icons/PaperClipIcon';
-import { withPrevent } from '@/utils/withPrevent';
 
 export class MessageInput extends Block {
   render(): HTMLElement {
@@ -24,11 +24,15 @@ export class MessageInput extends Block {
 
     const form = new Form({
       className: 'flex-row gap-10',
-      children: [attach, input, submit],
-      onSubmit: withPrevent((e) => {
+      inputsLayout: 'row',
+      inputs: [input],
+      children: [submit, attach],
+      onSubmit(e) {
+        e.preventDefault();
+
         const formEl = <HTMLFormElement>e.target;
         console.log(formEl.message.value);
-      }),
+      },
     });
 
     return form.getContent();

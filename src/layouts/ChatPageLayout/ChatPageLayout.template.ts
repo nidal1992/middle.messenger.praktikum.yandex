@@ -3,10 +3,10 @@ import './ChatPageLayout.scss';
 export const template = `
   <div class="chat-page-layout">
     <aside class="chat-page-layout__aside position-relative">
-      <div class="chat-page-layout__controls wrapper wrapper--10-10">
+      <div class="chat-page-layout__controls wrapper wrapper--10_10">
          {{{ controls }}}
       </div>
-      <div class="wrapper wrapper--10_10">
+      <div class="wrapper">
         {{{ contacts }}}  
       </div>
     </aside>

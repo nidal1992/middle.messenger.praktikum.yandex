@@ -1,9 +1,4 @@
-import { FormLayout } from '@/layouts/FormLayout';
-import { getAllInputsData } from '@/utils/getAllInputsData';
-import { validateAllFields, validateField, ValidationHandler } from '@/utils/validation';
-import { withPrevent } from '@/utils/withPrevent';
-
-import { schemas as sharedSchemas } from '@/model/schemas';
+import { schemas } from '@/model/schemas';
 import { ROUTES } from '@/model/routes';
 
 import { AuthLayout } from '@/layouts/AuthLayout';
@@ -12,116 +7,91 @@ import { Input } from '@/components/Input';
 import { Link } from '@/components/Link';
 import { Form } from '@/components/Form';
 
-type Inputs = 'first_name' | 'second_name' | 'email' | 'phone' | 'login' | 'password';
-type RegisterSchema = Record<Inputs, ValidationHandler>;
+function handleFocusOut(e: Event) {
+  const { value } = <HTMLInputElement>e.target;
+  this.validate(value);
+}
 
-const schema: RegisterSchema = {
-  login: sharedSchemas.login,
-  password: sharedSchemas.password,
-  first_name: sharedSchemas.first_name,
-  second_name: sharedSchemas.second_name,
-  email: sharedSchemas.email,
-  phone: sharedSchemas.phone,
-};
+function handleSubmit(e: Event) {
+  e.preventDefault();
 
-const inputs = [
-  new Input({
-    name: 'first_name',
-    label: 'First name',
-    placeholder: 'Your First name',
-    value: '',
-    error: '',
-    onFocusout(e) {
-      const { value } = <HTMLInputElement>e.target;
-      validateField(this, value, schema.first_name);
-    },
-  }),
-  new Input({
-    name: 'second_name',
-    label: 'Second name',
-    placeholder: 'Your Second name',
-    value: '',
-    error: '',
-    onFocusout(e) {
-      const { value } = <HTMLInputElement>e.target;
-      validateField(this, value, schema.second_name);
-    },
-  }),
-  new Input({
-    name: 'email',
-    label: 'Email',
-    placeholder: 'Your Email',
-    value: '',
-    error: '',
-    onFocusout(e) {
-      const { value } = <HTMLInputElement>e.target;
-      validateField(this, value, schema.email);
-    },
-  }),
-  new Input({
-    name: 'phone',
-    label: 'Phone',
-    placeholder: 'Your Phone',
-    value: '',
-    error: '',
-    onFocusout(e) {
-      const { value } = <HTMLInputElement>e.target;
-      validateField(this, value, schema.phone);
-    },
-  }),
-  new Input({
-    name: 'login',
-    label: 'Login',
-    placeholder: 'Your login',
-    value: '',
-    error: '',
-    onFocusout(e) {
-      const { value } = <HTMLInputElement>e.target;
-      validateField(this, value, schema.login);
-    },
-  }),
-  new Input({
-    name: 'password',
-    label: 'Password',
-    placeholder: 'Your passwword',
-    value: '',
-    error: '',
-    onFocusout(e) {
-      const { value } = <HTMLInputElement>e.target;
-      validateField(this, value, schema.password);
-    },
-  }),
-];
+  const inputs = this.getLists().inputs as Input[];
 
-const submit = new Button({
-  children: 'REGISTER',
-  className: 'horizontal-center',
-  variant: 'primary',
-});
-
-const link = new Link({
-  variant: 'ordinary',
-  className: 'horizontal-center',
-  label: 'Login',
-  href: ROUTES.LOGIN,
-  info: 'Do you have a profile?',
-});
-
-function handleSubmit() {
-  const isFieldsValid = validateAllFields(inputs, schema);
+  const isFieldsValid = inputs
+    .map((input) => Boolean(input.validate(input.getProps().value!)))
+    .every(Boolean);
 
   if (isFieldsValid) {
-    const data = getAllInputsData(inputs);
-
-    console.log(data);
+    console.log(this.allValues());
   }
 }
 
 export const RegisterPage = new AuthLayout({
   title: 'Registration',
   children: new Form({
-    onSubmit: withPrevent(handleSubmit),
+    inputsLayout: 'col-2',
     className: 'flex-col gap-10',
-    children: [new FormLayout({ children: inputs }), submit, link],
+    onSubmit: handleSubmit,
+
+    inputs: [
+      new Input({
+        name: 'first_name',
+        label: 'First name',
+        placeholder: 'Your First name',
+        schema: schemas.first_name,
+        onFocusout: handleFocusOut,
+      }),
+      new Input({
+        name: 'second_name',
+        label: 'Second name',
+        schema: schemas.second_name,
+        placeholder: 'Your Second name',
+        onFocusout: handleFocusOut,
+      }),
+      new Input({
+        name: 'email',
+        label: 'Email',
+        schema: schemas.email,
+        placeholder: 'Your Email',
+        onFocusout: handleFocusOut,
+      }),
+      new Input({
+        name: 'phone',
+        label: 'Phone',
+        schema: schemas.phone,
+        placeholder: 'Your Phone',
+        onFocusout: handleFocusOut,
+      }),
+      new Input({
+        name: 'login',
+        label: 'Login',
+        schema: schemas.login,
+        placeholder: 'Your login',
+        onFocusout: handleFocusOut,
+      }),
+      new Input({
+        name: 'password',
+        label: 'Password',
+        type: 'password',
+        schema: schemas.password,
+        placeholder: 'Your password',
+        onFocusout: handleFocusOut,
+      }),
+    ],
+
+    children: [
+      new Button({
+        children: 'REGISTER',
+        className: 'horizontal-center',
+        variant: 'primary',
+      }),
+      new Link({
+        variant: 'ordinary',
+        className: 'horizontal-center fit-content block',
+        label: 'Login',
+        href: ROUTES.LOGIN,
+        info: 'Do you have a profile?',
+      }),
+    ],
   }),
 });

@@ -27,9 +27,9 @@ export abstract class Block<Props extends SimpleMap = SimpleMap> {
 
     this._id = uuid();
 
-    this._lists = lists;
     this._events = events;
-    this._children = children;
+    this._lists = this.makePropsProxy(lists);
+    this._children = this.makePropsProxy(children);
     this._props = this.makePropsProxy<Props>(props);
 
     this._eventBus = new EventBus();
@@ -58,6 +58,7 @@ export abstract class Block<Props extends SimpleMap = SimpleMap> {
   _createDocumentElement(tag: string) {
     const element = document.createElement(tag);
 
+    element.classList.add(this.constructor.name.toUpperCase());
     if (this._props?.withInternalID) {
       element.setAttribute('data-id', this._id);
     }
@@ -77,13 +78,11 @@ export abstract class Block<Props extends SimpleMap = SimpleMap> {
     this._element.innerHTML = '';
 
     if (typeof render === 'string') {
-      const block = this.compile(render);
-      this._element.append(block);
+      this._element.append(this.compile(render));
     } else {
       this._element.append(render);
     }
 
-    this._element = this._element.children[0] as HTMLElement;
     this._addEvents();
   }
 
@@ -271,6 +270,14 @@ export abstract class Block<Props extends SimpleMap = SimpleMap> {
 
   getProps() {
     return this._props;
+  }
+
+  getLists() {
+    return this._lists;
+  }
+
+  getChildren() {
+    return this._children;
   }
 
   show() {

@@ -14,13 +14,14 @@ export const inputTemplate = `
       {{/if}}
   
       <input 
-        id="{{ id }}"
+        id="{{ name }}"
         name="{{ name }}"
         type="{{ type }}"
         value="{{ value }}"
-        {{#if required}}required{{/if}}
-        placeholder="{{ placeholder }}"
         class="input__element"
+        {{#if required}}required{{/if}}
+        {{#if autocomplete}}autocomplete{{/if}}
+        placeholder="{{ placeholder }}"
       >
     </div>
     {{#if error}}

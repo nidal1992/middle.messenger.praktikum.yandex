@@ -1,8 +1,4 @@
-import { getAllInputsData } from '@/utils/getAllInputsData';
-import { validateAllFields, validateField, ValidationHandler } from '@/utils/validation';
-import { withPrevent } from '@/utils/withPrevent';
-
-import { schemas as sharedSchemas } from '@/model/schemas';
+import { schemas } from '@/model/schemas';
 import { ROUTES } from '@/model/routes';
 
 import { AuthLayout } from '@/layouts/AuthLayout';
@@ -11,67 +7,61 @@ import { Input } from '@/components/Input';
 import { Link } from '@/components/Link';
 import { Form } from '@/components/Form';
 
-type Inputs = 'login' | 'password';
-type LoginSchema = Record<Inputs, ValidationHandler>;
+function handleFocusOut(e: Event): void {
+  const { value } = <HTMLInputElement>e.target;
+  this.validate(value);
+}
 
-const schema: LoginSchema = {
-  login: sharedSchemas.login,
-  password: sharedSchemas.password,
-};
+function handleSubmit(e: Event): void {
+  e.preventDefault();
 
-const inputs = [
-  new Input({
-    name: 'login',
-    label: 'Login',
-    placeholder: 'Your login',
-    value: '',
-    error: '',
-    onFocusout(e) {
-      const { value } = <HTMLInputElement>e.target;
-      validateField(this, value, schema.login);
-    },
-  }),
-  new Input({
-    name: 'password',
-    label: 'Password',
-    placeholder: 'Your password',
-    value: '',
-    error: '',
-    onFocusout(e) {
-      const { value } = <HTMLInputElement>e.target;
-      validateField(this, value, schema.password);
-    },
-  }),
-];
+  const inputs = this.getLists().inputs as Input[];
 
-const submit = new Button({
-  children: 'ENTER',
-  className: 'horizontal-center',
-  variant: 'primary',
-});
-
-const link = new Link({
-  variant: 'underline',
-  className: 'horizontal-center',
-  label: 'Registration',
-  href: ROUTES.REGISTRATION,
-});
-
-function handleSubmit() {
-  const isFieldsValid = validateAllFields(inputs, schema);
+  const isFieldsValid = inputs
+    .map((input) => Boolean(input.validate(input.getProps().value!)))
+    .every(Boolean);
 
   if (isFieldsValid) {
-    const data = getAllInputsData(inputs);
-
-    console.log(data);
+    console.log(this.allValues());
   }
 }
 
 export const LoginPage = new AuthLayout({
   title: 'Login',
   children: new Form({
-    onSubmit: withPrevent(handleSubmit),
+    inputsLayout: 'col',
     className: 'flex-col gap-10',
-    children: [...inputs, submit, link],
+    onSubmit: handleSubmit,
+    inputs: [
+      new Input({
+        name: 'login',
+        label: 'Login',
+        placeholder: 'Your login',
+        schema: schemas.login,
+        onFocusout: handleFocusOut,
+      }),
+      new Input({
+        name: 'password',
+        label: 'Password',
+        type: 'password',
+        placeholder: 'Your password',
+        autocomplete: true,
+        schema: schemas.password,
+        onFocusout: handleFocusOut,
+      }),
+    ],
+    children: [
+      new Button({
+        children: 'ENTER',
+        className: 'horizontal-center',
+        variant: 'primary',
+      }),
+      new Link({
+        variant: 'underline',
+        className: 'horizontal-center fit-content block',
+        label: 'Registration',
+        href: ROUTES.REGISTRATION,
+      }),
+    ],
   }),
 });

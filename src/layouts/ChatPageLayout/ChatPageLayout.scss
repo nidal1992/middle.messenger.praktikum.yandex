@@ -16,7 +16,8 @@
   &__controls {
     position: sticky;
     top: 0;
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 1fr;
     gap: 10px;
     height: fit-content;
     z-index: 10;
