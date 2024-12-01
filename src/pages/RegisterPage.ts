@@ -1,11 +1,15 @@
+import { Block } from '@/entites/Block';
+import { Router } from '@/entites/Router';
+import { ROOT_SELECTOR } from '@/model/const';
 import { schemas } from '@/model/schemas';
 import { ROUTES } from '@/model/routes';
 
 import { AuthLayout } from '@/layouts/AuthLayout';
 import { Button } from '@/components/Button';
 import { Input } from '@/components/Input';
-import { Link } from '@/components/Link';
 import { Form } from '@/components/Form';
+
+const router = new Router(ROOT_SELECTOR);
 
 function handleFocusOut(e: Event) {
   const { value } = <HTMLInputElement>e.target;
@@ -26,7 +30,7 @@ function handleSubmit(e: Event) {
   }
 }
 
-export const RegisterPage = new AuthLayout({
+export const registerPage = new AuthLayout({
   title: 'Registration',
   children: new Form({
     inputsLayout: 'col-2',
@@ -85,13 +89,19 @@ export const RegisterPage = new AuthLayout({
         className: 'horizontal-center',
         variant: 'primary',
       }),
-      new Link({
-        variant: 'ordinary',
+      new Button({
+        variant: 'link',
+        type: 'button',
         className: 'horizontal-center fit-content block',
-        label: 'Login',
-        href: ROUTES.LOGIN,
-        info: 'Do you have a profile?',
+        children: 'Login',
+        onClick: () => router.go(ROUTES.LOGIN),
       }),
     ],
   }),
 });
+
+export class RegisterPage extends Block {
+  render(): HTMLElement | string {
+    return registerPage.getContent();
+  }
+}

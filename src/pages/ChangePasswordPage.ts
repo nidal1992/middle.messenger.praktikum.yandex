@@ -1,3 +1,6 @@
+import { Block } from '@/entites/Block';
+import { Router } from '@/entites/Router';
+import { ROOT_SELECTOR } from '@/model/const';
 import { ROUTES } from '@/model/routes';
 import { schemas } from '@/model/schemas';
 
@@ -6,7 +9,6 @@ import { parseUserData } from '@/utils/parseUserData';
 import { SettingsPageLayout } from '@/layouts/SettingsPageLayout';
 import { Input } from '@/components/Input';
 import { Avatar } from '@/components/Avatar';
-import { Link } from '@/components/Link';
 import { Button } from '@/components/Button';
 import { Form } from '@/components/Form';
 
@@ -19,6 +21,8 @@ const { avatar } = parseUserData({
   email: 'john_dow@gmail.com',
   phone: '+7 999 999-99-99',
 });
+
+const router = new Router(ROOT_SELECTOR);
 
 function handleFocusOut(e: Event): void {
   const { value } = <HTMLInputElement>e.target;
@@ -48,15 +52,15 @@ function handleSubmit(e: Event) {
   }
 }
 
-export const ChangePasswordPage = new SettingsPageLayout({
+export const changePasswordPage = new SettingsPageLayout({
   avatar: new Avatar({
     src: avatar,
     big: true,
   }),
-  link: new Link({
-    href: ROUTES.PROFILE,
-    label: 'Back to Profile',
-    variant: 'arrow',
+  link: new Button({
+    onClick: () => router.go(ROUTES.PROFILE),
+    children: 'Back to Profile',
+    variant: 'link',
   }),
 
   children: [
@@ -102,3 +106,9 @@ export const ChangePasswordPage = new SettingsPageLayout({
     }),
   ],
 });
+
+export class ChangePasswordPage extends Block {
+  render(): HTMLElement | string {
+    return changePasswordPage.getContent();
+  }
+}

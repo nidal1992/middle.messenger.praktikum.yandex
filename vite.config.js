@@ -13,41 +13,14 @@ export default defineConfig({
   build: {
     outDir: resolve(__dirname, 'dist'),
     emptyOutDir: false,
-    rollupOptions: {
-      input: {
-        login: resolve(__dirname, 'src', 'index.html'),
-        register: resolve(__dirname, 'src', 'demonstrate-routes', 'register', 'index.html'),
-        main: resolve(__dirname, 'src', 'demonstrate-routes', 'main-page', 'index.html'),
-        settingsProfile: resolve(
-          __dirname,
-          'src',
-          'demonstrate-routes',
-          'settings-profile',
-          'index.html',
-        ),
-        settingsEdit: resolve(
-          __dirname,
-          'src',
-          'demonstrate-routes',
-          'settings-edit',
-          'index.html',
-        ),
-        changePassword: resolve(
-          __dirname,
-          'src',
-          'demonstrate-routes',
-          'change-password-page',
-          'index.html',
-        ),
-      },
-    },
+    minify: true,
   },
-  server: {
-    port: 3000,
-  },
-  preview: {
-    port: 3000,
-  },
+  // server: {
+  //   port: 3000,
+  // },
+  // preview: {
+  //   port: 3000,
+  // },
 
   css: {
     postcss: {

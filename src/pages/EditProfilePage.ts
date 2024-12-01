@@ -1,3 +1,6 @@
+import { Block } from '@/entites/Block';
+import { Router } from '@/entites/Router';
+import { ROOT_SELECTOR } from '@/model/const';
 import { schemas } from '@/model/schemas';
 import { ROUTES } from '@/model/routes';
 
@@ -5,7 +8,6 @@ import { SettingsPageLayout } from '@/layouts/SettingsPageLayout';
 import { Avatar } from '@/components/Avatar';
 import { Button } from '@/components/Button';
 import { Input } from '@/components/Input';
-import { Link } from '@/components/Link';
 import { Form } from '@/components/Form';
 
 const user = {
@@ -17,6 +19,8 @@ const user = {
   email: 'john_dow@gmail.com',
   phone: '+79999999999',
 };
+
+const router = new Router(ROOT_SELECTOR);
 
 function handleFocusOut(e: Event): void {
   const { value } = <HTMLInputElement>e.target;
@@ -37,15 +41,15 @@ function handleSubmit(e: Event): void {
   }
 }
 
-export const EditProfilePage = new SettingsPageLayout({
+export const editProfilePage = new SettingsPageLayout({
   avatar: new Avatar({
     src: user.avatar,
     big: true,
   }),
-  link: new Link({
-    href: ROUTES.PROFILE,
-    label: 'Back to Profile',
-    variant: 'arrow',
+  link: new Button({
+    onClick: () => router.go(ROUTES.PROFILE),
+    children: 'Back to Profile',
+    variant: 'link',
   }),
   children: [
     new Form({
@@ -113,3 +117,9 @@ export const EditProfilePage = new SettingsPageLayout({
     }),
   ],
 });
+
+export class EditProfilePage extends Block {
+  render(): HTMLElement | string {
+    return editProfilePage.getContent();
+  }
+}

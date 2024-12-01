@@ -8,5 +8,5 @@ export type ButtonProps = {
   type?: 'button' | 'submit';
   form?: string;
   id?: string;
-  variant?: 'failure' | 'primary' | 'icon';
+  variant?: 'failure' | 'primary' | 'icon' | 'link';
 };

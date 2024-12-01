@@ -50,4 +50,33 @@
       }
     }
   }
+
+  &--link {
+    padding: 0;
+    background-color: transparent;
+    font-size: 14px;
+    color: var(--blue);
+    text-transform: uppercase;
+    text-decoration: none;
+
+    &--underline {
+      text-decoration: underline;
+    }
+
+    &::before {
+      content: attr(data-info);
+      color: var(--grey-99);
+      text-decoration: none;
+    }
+
+    svg {
+      display: none;
+    }
+
+    &--arrow {
+      svg {
+        display: initial;
+      }
+    }
+  }
 }

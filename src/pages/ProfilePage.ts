@@ -1,8 +1,10 @@
 import { Button } from '@/components/Button';
 import { KeyValue } from '@/components/KeyValue/KeyValue';
-import { Link } from '@/components/Link';
+import { Block } from '@/entites/Block';
+import { Router } from '@/entites/Router';
 import { SettingsPageLayout } from '@/layouts/SettingsPageLayout';
 import { Avatar } from '@/components/Avatar';
+import { ROOT_SELECTOR } from '@/model/const';
 import { ROUTES } from '@/model/routes';
 import { parseUserData } from '@/utils/parseUserData';
 
@@ -16,6 +18,8 @@ const { avatar, ...user } = parseUserData({
   phone: '+7 999 999-99-99',
 });
 
+const router = new Router(ROOT_SELECTOR);
+
 const rows = Object.entries(user).map(
   ([key, value]) =>
     new KeyValue({
@@ -24,11 +28,11 @@ const rows = Object.entries(user).map(
     }),
 );
 
-export const ProfilePage = new SettingsPageLayout({
-  link: new Link({
-    href: ROUTES.CHAT,
-    variant: 'arrow',
-    label: 'back to chats',
+export const profilePage = new SettingsPageLayout({
+  link: new Button({
+    onClick: () => router.go(ROUTES.CHAT),
+    variant: 'link',
+    children: 'Back to chats',
   }),
   children: rows,
   avatar: new Avatar({
@@ -36,13 +40,15 @@ export const ProfilePage = new SettingsPageLayout({
     src: avatar,
   }),
   controls: [
-    new Link({
-      href: ROUTES.CHANGE_PASSWORD,
-      label: 'CHANGE PASSWORD',
+    new Button({
+      onClick: () => router.go(ROUTES.CHANGE_PASSWORD),
+      children: 'CHANGE PASSWORD',
+      variant: 'link',
     }),
-    new Link({
-      href: ROUTES.EDIT_PROFILE,
-      label: 'EDIT PROFILE',
+    new Button({
+      onClick: () => router.go(ROUTES.EDIT_PROFILE),
+      children: 'EDIT PROFILE',
+      variant: 'link',
     }),
     new Button({
       children: 'EXIT',
@@ -50,3 +56,9 @@ export const ProfilePage = new SettingsPageLayout({
     }),
   ],
 });
+
+export class ProfilePage extends Block {
+  render(): HTMLElement | string {
+    return profilePage.getContent();
+  }
+}

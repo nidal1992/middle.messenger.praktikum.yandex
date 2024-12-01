@@ -2,9 +2,9 @@
 // для удобста итерирования в компоненте NavigationLayout
 export const ROUTES = {
   LOGIN: '/',
-  REGISTRATION: '/demonstrate-routes/register/index.html',
-  CHAT: '/demonstrate-routes/main-page/index.html',
-  PROFILE: '/demonstrate-routes/settings-profile/index.html',
-  EDIT_PROFILE: '/demonstrate-routes/settings-edit/index.html',
-  CHANGE_PASSWORD: '/demonstrate-routes/change-password-page/index.html',
+  REGISTRATION: '/register',
+  CHAT: '/chat',
+  PROFILE: '/settings-profile',
+  EDIT_PROFILE: '/settings-edit',
+  CHANGE_PASSWORD: '/change-password-page',
 };

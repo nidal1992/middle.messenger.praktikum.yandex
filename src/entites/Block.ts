@@ -276,15 +276,15 @@ export abstract class Block<Props extends SimpleMap = SimpleMap> {
     return this._lists;
   }
 
-  getChildren() {
-    return this._children;
-  }
+  // getChildren() {
+  //   return this._children;
+  // }
 
   show() {
     this.getContent().style.display = 'block';
   }
 
   hide() {
-    this.getContent().style.display = 'hide';
+    this.getContent().style.display = 'none';
   }
 }

@@ -1,11 +1,12 @@
 import { MessageRow } from '@/components/MessageRow';
+import { Block } from '@/entites/Block';
 import { ChatPageLayout } from '@/layouts/ChatPageLayout';
 import { Burger } from '@/modules/Burger';
 import { MessageInput } from '@/modules/MessageInput';
 import { SearchInput } from '@/modules/SearchInput';
 import { ContactRow } from '@/components/ContactRow';
 
-export const ChatPage = new ChatPageLayout({
+export const chatPage = new ChatPageLayout({
   controls: [new Burger(), new SearchInput()],
   contacts: [
     new ContactRow({
@@ -48,3 +49,9 @@ export const ChatPage = new ChatPageLayout({
   ],
   input: new MessageInput(),
 });
+
+export class ChatPage extends Block {
+  render(): HTMLElement | string {
+    return chatPage.getContent();
+  }
+}

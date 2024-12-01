@@ -1,3 +1,5 @@
+import { Block } from '@/entites/Block';
+
 export interface IUser extends SimpleMap {
   avatar?: string;
   first_name: string;
@@ -6,4 +8,8 @@ export interface IUser extends SimpleMap {
   login: string;
   email: string;
   phone: string;
+}
+
+export interface BlockConstructor {
+  new (props: SimpleMap): Block;
 }
