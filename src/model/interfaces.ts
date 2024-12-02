@@ -13,3 +13,7 @@ export interface IUser extends SimpleMap {
 export interface BlockConstructor {
   new (props: SimpleMap): Block;
 }
+
+export type PlainObject<T = unknown> = {
+  [k in string]: T;
+};

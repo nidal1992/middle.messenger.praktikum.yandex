@@ -1,4 +1,6 @@
-export function shallowEqual(a: SimpleMap, b: SimpleMap): boolean {
+import { PlainObject } from '@/model/interfaces';
+
+export function shallowEqual(a: PlainObject, b: PlainObject): boolean {
   if (Object.keys(a).length !== Object.keys(b).length) {
     return false;
   }

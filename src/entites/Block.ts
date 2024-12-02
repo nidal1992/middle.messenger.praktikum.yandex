@@ -1,10 +1,12 @@
 import Handlebars from 'handlebars';
 import { v4 as uuid } from 'uuid';
+
 import { shallowEqual } from '@/utils/shallowEqual';
+import { PlainObject } from '@/model/interfaces';
 
 import EventBus from './EventBus';
 
-export abstract class Block<Props extends SimpleMap = SimpleMap> {
+export abstract class Block<Props extends PlainObject = PlainObject> {
   static EVENTS = {
     EVENT_INIT: 'init',
     EVENT_FLOW_CDM: 'flow:component-did-mount',

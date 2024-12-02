@@ -14,6 +14,7 @@ export default [
   {
     rules: {
       '@typescript-eslint/no-unsafe-function-type': 0,
+      '@typescript-eslint/no-explicit-any': 1,
     },
   },
 ];
