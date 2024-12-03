@@ -1,4 +1,4 @@
-import { PlainObject } from '@/model/interfaces';
+import { PlainObject } from '@/model/types';
 
 export function isPlainObject(value: unknown): value is PlainObject {
   return (

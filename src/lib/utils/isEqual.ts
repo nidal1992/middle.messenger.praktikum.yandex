@@ -1,5 +1,5 @@
-import { PlainObject } from '@/model/interfaces';
-import { isArrayOrObject } from '@/utils/isArrayOrObject';
+import { PlainObject } from '@/model/types';
+import { isArrayOrObject } from '@/lib/utils/isArrayOrObject';
 
 export function isEqual(lhs: PlainObject, rhs: PlainObject) {
   if (Object.keys(lhs).length !== Object.keys(rhs).length) {

@@ -1,4 +1,4 @@
-import { Block } from '@/entites/Block';
+import { Block } from '@/lib/core/Block';
 
 import { template } from './Form.template';
 import type { FormProps } from './Form.props';

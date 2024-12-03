@@ -1,6 +1,6 @@
-import { PlainObject } from '@/model/interfaces';
-import { isArrayOrObject } from '@/utils/isArrayOrObject';
-import { isPlainObject } from '@/utils/isPlainObject';
+import { PlainObject } from '@/model/types';
+import { isArrayOrObject } from '@/lib/utils/isArrayOrObject';
+import { isPlainObject } from '@/lib/utils/isPlainObject';
 
 function getKey(key: string, parentKey?: string) {
   return parentKey ? `${parentKey}[${key}]` : key;

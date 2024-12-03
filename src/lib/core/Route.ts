@@ -1,6 +1,6 @@
-import { Block } from '@/entites/Block';
-import { BlockConstructor } from '@/model/interfaces';
-import { render } from '@/utils/render';
+import { Block } from '@/lib/core/Block';
+import { BlockConstructor } from '@/model/types';
+import { render } from '@/lib/utils/render';
 
 export class Route {
   private readonly _pathname: string;

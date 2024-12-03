@@ -1,4 +1,4 @@
-import { Block } from '@/entites/Block';
+import { Block } from '@/lib/core/Block';
 
 export interface IUser extends SimpleMap {
   avatar?: string;
@@ -11,7 +11,7 @@ export interface IUser extends SimpleMap {
 }
 
 export interface BlockConstructor {
-  new (props: SimpleMap): Block;
+  new (props: PlainObject): Block;
 }
 
 export type PlainObject<T = unknown> = {

@@ -1,4 +1,4 @@
-import { PlainObject } from '@/model/interfaces';
+import { PlainObject } from '@/model/types';
 
 export function shallowEqual(a: PlainObject, b: PlainObject): boolean {
   if (Object.keys(a).length !== Object.keys(b).length) {

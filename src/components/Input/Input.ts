@@ -1,4 +1,4 @@
-import { Block } from '@/entites/Block';
+import { Block } from '@/lib/core/Block';
 
 import { inputTemplate } from './Input.template';
 import type { InputProps } from './Input.props';

@@ -1,10 +1,11 @@
-import { s, validator } from '@/utils/validation';
+import { s, validator } from '@/lib/utils/validation';
 
 const MIN_LOGIN_LEN = 3;
 const MAX_LOGIN_LEN = 20;
 const MIN_PASSWORD_LEN = 8;
 const MAX_PASSWORD_LEN = 40;
 
+// TODO: что сделать с этим монстром и схемами валидайций
 export const schemas = {
   login: validator(
     s()

@@ -1,4 +1,4 @@
-import { Block } from '@/entites/Block';
+import { Block } from '@/lib/core/Block';
 
 import { Input } from '@/components/Input';
 import { SearchIcon } from '@/components/icons/SearchIcon';

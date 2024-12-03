@@ -1,4 +1,4 @@
-import { Block } from '@/entites/Block';
+import { Block } from '@/lib/core/Block';
 
 export function render(selector: string, block: Block): Element {
   const root = document.querySelector(selector);

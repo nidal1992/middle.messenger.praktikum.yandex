@@ -1,8 +1,8 @@
+import { isEqual } from '@/lib/utils/isEqual';
 import Handlebars from 'handlebars';
 import { v4 as uuid } from 'uuid';
 
-import { shallowEqual } from '@/utils/shallowEqual';
-import { PlainObject } from '@/model/interfaces';
+import { PlainObject } from '@/model/types';
 
 import EventBus from './EventBus';
 
@@ -215,7 +215,7 @@ export abstract class Block<Props extends PlainObject = PlainObject> {
   }
 
   componentDidUpdate(oldProps: SimpleMap, newProps: SimpleMap) {
-    return !shallowEqual(oldProps, newProps);
+    return !isEqual(oldProps, newProps);
   }
 
   setProps(newProps: Partial<Props>) {
@@ -277,10 +277,6 @@ export abstract class Block<Props extends PlainObject = PlainObject> {
   getLists() {
     return this._lists;
   }
-
-  // getChildren() {
-  //   return this._children;
-  // }
 
   show() {
     this.getContent().style.display = 'block';

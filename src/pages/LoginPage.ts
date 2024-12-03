@@ -1,5 +1,5 @@
-import { Block } from '@/entites/Block';
-import { Router } from '@/entites/Router';
+import { Block } from '@/lib/core/Block';
+import { Router } from '@/lib/core/Router';
 import { ROOT_SELECTOR } from '@/model/const';
 import { schemas } from '@/model/schemas';
 import { ROUTES } from '@/model/routes';

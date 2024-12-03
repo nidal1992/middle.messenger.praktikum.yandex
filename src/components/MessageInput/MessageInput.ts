@@ -1,4 +1,4 @@
-import { Block } from '@/entites/Block';
+import { Block } from '@/lib/core/Block';
 import { Form } from '@/components/Form';
 import { Input } from '@/components/Input';
 import { Button } from '@/components/Button';

@@ -1,4 +1,4 @@
-import { Block } from '@/entites/Block';
+import { Block } from '@/lib/core/Block';
 
 import type { ButtonProps } from './Button.props';
 import { template } from './Button.template';

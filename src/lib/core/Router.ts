@@ -1,5 +1,5 @@
-import { Route } from '@/entites/Route';
-import { BlockConstructor } from '@/model/interfaces';
+import { Route } from '@/lib/core/Route';
+import { BlockConstructor } from '@/model/types';
 
 export class Router {
   private static __instance: Router;
